@@ -1,20 +1,7 @@
 $(document).ready(function () {
 
-    // hide/show floors tab
-    $(".platforms .floor").hide().eq(0).show();
-    $('.floors-nav .item').live("click", function () {
-        var chack = $(this).hasClass('active');
-        if (chack) {
-            return false;
-        } else {
-            $('.floors-nav .item').removeClass("active");
-            var tabCount = $(this).addClass("active").index('.floors-nav .item');
-            $(".platforms .floor").hide().eq(tabCount).show();
-        }
-    });
 
-
-    // hide/show floors tab
+    // hide/show content tabs
     $(".content-tab").hide().eq(0).show();
     $('header .nav .item').live("click", function () {
         var chack = $(this).hasClass('active');
@@ -33,6 +20,87 @@ $(document).ready(function () {
     });
 
 
+    // participants slider
+    var itemWidth = parseFloat($('.items-list. .item').css('width')),
+        itemLeftMargin = parseFloat($('.items-list. .item').css('margin-right')),
+        slidesNum = 1;
+
+    $('.slide-title .text').live("click", function (itemsCount) {
+        slidesNum = 1;
+        $('.participants .line-wrap').removeClass('open');
+        var seleced = $(this).parent().parent().addClass('open').find('.items-list'),
+            itemsCount = seleced.find('.item').length,
+            wrapWidth = itemsCount * (itemWidth + itemLeftMargin) - itemLeftMargin;;
+
+        if (itemsCount < 5) {
+            seleced.css({
+                "width": wrapWidth + 'px',
+                "margin-left": -(wrapWidth / 2) + 'px',
+                "left": "50%"
+            }).siblings(".prev-slide, .next-slide").hide();
+        } else {
+            seleced.css({
+                "width": wrapWidth + 'px',
+                "left": 64
+            });
+            seleced.siblings(".next-slide").show();
+        }
+
+        if (slidesNum === 1) {
+            seleced.siblings(".prev-slide").hide();
+        }
+    });
+
+    $('.next-slide, .prev-slide').live("click", function (itemsCount) {
+        var selecedArrow = $(this).siblings('.items-list'),
+            itemsCount = selecedArrow.find('.item').length;
+
+        if (slidesNum == 1) {
+            selecedArrow.css('left', 64);
+        } else if (slidesNum == 2) {
+            selecedArrow.css('left', -(itemWidth + itemLeftMargin - 64) * (slidesNum - 1));
+        } else if (slidesNum > 2) {
+            selecedArrow.css('left', -((itemWidth + itemLeftMargin) * (slidesNum - 1) - 64));
+        }
+
+        var test = itemsCount - 3;
+
+        if (slidesNum === 1) {
+            $('.prev-slide').hide();
+        } else {
+            $('.prev-slide').show();
+        }
+
+        if (slidesNum === test) {
+            $('.next-slide').hide();
+        } else {
+            $('.next-slide').show();
+        }
+
+    });
+
+    $(".next-slide").click(function () {
+        slidesNum++;
+    })
+    $(".prev-slide").click(function () {
+        slidesNum--;
+    })
+
+
+    // hide/show floors tab
+    $(".platforms .floor").hide().eq(0).show();
+    $('.floors-nav .item').live("click", function () {
+        var chack = $(this).hasClass('active');
+        if (chack) {
+            return false;
+        } else {
+            $('.floors-nav .item').removeClass("active");
+            var tabCount = $(this).addClass("active").index('.floors-nav .item');
+            $(".platforms .floor").hide().eq(tabCount).show();
+        }
+    });
+
+    // floors mapswitcher
     $('.block .nav .item').live("click", function () {
         $('.left .block').addClass('default');
         $('.left .block .item').addClass('default');
@@ -82,86 +150,16 @@ $(document).ready(function () {
 
 
 
-    // participants slider
-    var itemWidth = parseFloat($('.items-list. .item').css('width')),
-        itemLeftMargin = parseFloat($('.items-list. .item').css('margin-right')),
-        slidesNum = 1;
-
-    $('.slide-title .text').live("click", function (itemsCount) {
-        slidesNum = 1;
-        $('.participants .line-wrap').removeClass('open');
-        var seleced = $(this).parent().parent().addClass('open').find('.items-list'),
-            itemsCount = seleced.find('.item').length,
-            wrapWidth = itemsCount * (itemWidth + itemLeftMargin) - itemLeftMargin;;
-
-        if (itemsCount < 5) {
-            seleced.css({
-                "width": wrapWidth + 'px',
-                "margin-left": -(wrapWidth / 2) + 'px',
-                "left": "50%"
-            }).siblings(".prev-slide, .next-slide").hide();
-        } else {
-            seleced.css({
-                "width": wrapWidth + 'px',
-                "left": 64
-            });
-            seleced.siblings(".next-slide").show();
-        }
-
-        if (slidesNum === 1) {
-            seleced.siblings(".prev-slide").hide();
-        }
-
-    });
-
-    $('.next-slide, .prev-slide').live("click", function (itemsCount) {
-        var selecedArrow = $(this).siblings('.items-list'),
-            itemsCount = selecedArrow.find('.item').length;
-
-        if (slidesNum == 1) {
-            selecedArrow.css('left', 64);
-        } else if (slidesNum == 2) {
-            selecedArrow.css('left', -(itemWidth + itemLeftMargin - 64) * (slidesNum - 1));
-        } else if (slidesNum > 2) {
-            selecedArrow.css('left', -((itemWidth + itemLeftMargin) * (slidesNum - 1) - 64));
-        }
-
-        var test = itemsCount - 3;
-
-        if (slidesNum === 1) {
-            $('.prev-slide').hide();
-        } else {
-            $('.prev-slide').show();
-        }
-
-        if (slidesNum === test) {
-            $('.next-slide').hide();
-        } else {
-            $('.next-slide').show();
-        }
-    });
-
-    // arrows click
-    $(".next-slide").click(function () {
-        slidesNum++;
-    })
-    $(".prev-slide").click(function () {
-        slidesNum--;
-    })
 
 
 
 
 
-
-
-var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', attribution: mapboxAttribution});
 
     // map
     var map = L.map('map').setView(
-        [59.932539, 30.352946],
-        16,
-        layers: [grayscale, cities]
+        [59.932040, 30.356126],
+        16
     );
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

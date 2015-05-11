@@ -927,3 +927,17 @@ footer {
     background: $green;
 }
 /** Footer end **/
+
+.leaflet-popup-content-wrapper {
+    @include border-radius(0px);
+    @include box-shadow(5px 5px 6px rgba(0, 0, 0, 0.3));
+}
+
+.leaflet-popup-content {
+    font: 14px/18px "Pragmaticac Light", Arial, sans-serif;
+}
+
+.leaflet-popup-tip {
+    margin: -14px auto 0;
+}
+/** Leaflet css end **/

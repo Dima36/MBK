@@ -102,50 +102,36 @@ $(document).ready(function () {
 
     // floors mapswitcher
     $('.block .nav .item').live("click", function () {
+        $('.floor.first .right').addClass('select');
         $('.left .block').addClass('default');
         $('.left .block .item').addClass('default');
-        $('.block .nav li').removeClass('selected');
-        $('.block .drop-down').hide();
-        $('.floor.first .right').addClass('select');
+        $('.drop-down').hide();
+        $('.drop-down .ul li').removeClass('selected');
+        $('.right .wrapper .item').removeClass('show');
+        $('.wrapper .item .popup').removeClass('show');
+        $('.drop-down .subsidiary-item').removeClass('selected');
 
-        $(this).removeClass('default').addClass('selected').parent().parent().removeClass("default");
+        $(this).removeClass('default').addClass('selected').parent().parent().removeClass('default');
+        $(this).siblings('.drop-down').show().find('ul li:first').addClass('selected');
 
-        var chack = $(this).hasClass('default');
-        if (chack) {
-            return false;
-        } else {
-            $(this).parent().parent().find('.drop-down').show();
-        }
-    });
-
-
-    $('.drop-down li').live("click", function () {
-        $('.drop-down li').removeClass('selected');
-        $(this).addClass('selected');
-    });
-
-
-    $('.block .nav .item, .drop-down li').live("click", function () {
-        $(".right .wrapper").removeClass('show');
-
-        var popupid = $(this).attr('id');
+        var popupid = $(this).attr('data-popup');
         var popup = $("#" + popupid + "_active");
-        popup.addClass('show');
+        popup.find('.item').addClass('show').find('.popup').addClass('show');
     });
 
+    $('.drop-down .subsidiary-item').live("click", function () {
+        $('.drop-down .subsidiary-item').removeClass('selected');
+        $(this).addClass('selected');
+        $('.right .wrapper .item').removeClass('show');
+        $('.right .wrapper .item .popup').removeClass('show');
+
+        var popupid = $(this).attr('data-popup');
+        var popup = $("#" + popupid + "_active");
+        popup.find('.item').addClass('show').find('.popup').addClass('show');
+    });
 
     $('.wrapper .close-icon').live("click", function () {
-        $(this).parent().parent().removeClass('show');
-        /*
-        $('.block .nav .item').removeClass('selected').removeClass('default');
-        $('.left .block').removeClass('default');
-        $('.floor.first .right').removeClass('select');*/
-    });
-
-
-    $('.nutrition-list .item').live("click", function () {
-        $('#wrapper5_active').addClass('show');
-        $('#wrapper4_active').addClass('show');
+        $(this).parent().removeClass('show');
     });
 
 
@@ -153,21 +139,27 @@ $(document).ready(function () {
 
 
 
-
-
-
-    // map
-    var map = L.map('map').setView(
-        [59.932040, 30.356126],
-        16
-    );
+    var map = L.map('map').setView([59.932040, 30.356126], 16);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    //var littleton = L.marker([59.931765, 30.354620]).bindPopup('ст. метро «Маяковская»');
+
+    //littleton.addTo(map);
 
 
+
+
+    var myIcon = L.icon({
+        iconUrl: '../img/my-icon.png',
+        iconSize: [43, 63]
+    });
+
+    L.marker([59.932157, 30.351523], {
+        icon: myIcon
+    }).addTo(map);
 
 
 });

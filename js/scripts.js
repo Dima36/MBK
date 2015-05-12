@@ -79,6 +79,11 @@ $(document).ready(function () {
 
     });
 
+    $('.close-slider').live("click", function (itemsCount) {
+        slidesNum = 1;
+        $('.participants .line-wrap').removeClass('open');
+    });
+
     $(".next-slide").click(function () {
         slidesNum++;
     })
@@ -89,6 +94,7 @@ $(document).ready(function () {
 
     // hide/show floors tab
     $(".platforms .floor").hide().eq(0).show();
+    /*
     $('.floors-nav .item').live("click", function () {
         var chack = $(this).hasClass('active');
         if (chack) {
@@ -98,7 +104,8 @@ $(document).ready(function () {
             var tabCount = $(this).addClass("active").index('.floors-nav .item');
             $(".platforms .floor").hide().eq(tabCount).show();
         }
-    });
+    });*/
+
 
     // floors mapswitcher
     $('.block .nav .item').live("click", function () {
@@ -130,6 +137,11 @@ $(document).ready(function () {
         popup.find('.item').addClass('show').find('.popup').addClass('show');
     });
 
+    $('.wrapper .item .floor-icon').live("click", function () {
+        $('.wrapper .item .popup').removeClass('show');
+        $(this).siblings('.popup').addClass('show');
+    });
+
     $('.wrapper .close-icon').live("click", function () {
         $(this).parent().removeClass('show');
     });
@@ -138,20 +150,17 @@ $(document).ready(function () {
     // MAP
     var map = L.map('map').setView([59.932040, 30.356126], 16);
 
-    L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+        attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    /*L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-    }).addTo(map);
+    }).addTo(map);*/
 
     // big marker
-    var bigIcon = L.icon({
-        iconUrl: '../img/big-icon.png',
-        iconSize: [43, 63]
-    });
 
-    L.marker([59.932050, 30.350842], {
-        icon: bigIcon
-    }).addTo(map);
 
     // icons
     var metroIcon = L.divIcon({
@@ -173,8 +182,15 @@ $(document).ready(function () {
         SeaPortIcon = L.divIcon({
             className: 'transport-icon ship',
             iconSize: [39, 39]
+        }),
+        MapBig = L.divIcon({
+            className: 'map-big',
+            iconSize: [43, 63]
         });
 
+    L.marker([59.932050, 30.350842], {
+        icon: MapBig
+    }).addTo(map);
 
     // markers
     var metroMarker = L.marker([59.931776, 30.354581], {
@@ -192,6 +208,7 @@ $(document).ready(function () {
         SeaPortMarker = L.marker([59.948942, 30.194941], {
             icon: SeaPortIcon
         }).bindPopup("Пассажирский<br>морской терминал").addTo(map);
+
 
     var pointA = new L.LatLng(59.955272, 30.356104),
         pointB = new L.LatLng(59.955334, 30.355697),

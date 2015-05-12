@@ -25,7 +25,7 @@ $folder) {
 "Pragmaticac Bold");
 /** Add fonts end **/
 
-$green: #009055;
+$green: #009343;
 /** Variables end **/
 
 html {
@@ -141,6 +141,22 @@ h3 {
     }
 }
 
+.close-slider {
+    position: absolute;
+    left: 50%;
+    margin-left: 455px;
+    top: 15px;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBRDVCMEE2QkY4RTIxMUU0ODY1NUY2OTA2QjU3RTNCNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBRDVCMEE2Q0Y4RTIxMUU0ODY1NUY2OTA2QjU3RTNCNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkFENUIwQTY5RjhFMjExRTQ4NjU1RjY5MDZCNTdFM0I2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkFENUIwQTZBRjhFMjExRTQ4NjU1RjY5MDZCNTdFM0I2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+POVdDAAAAPxJREFUeNqk0z0WgjAMAOBAFkcWdleZ8AY66agnsB4BD4LeAJicHZ28ApM7s4vewAT7/HmVkpa8VygJ73u0pAHkSQoAKeyuJQyJPInoqmiUIV32NApKFgPBi7YUo5UuKS/4A/KKa/5ShPOthkXc0MOqLSziMeVOnuCctvGObdEH7gC5hO+XXGAL+ItK4R7QRPtgAcgRWPZMta32Cu7hTALaURNmIOoD/y/f3IoHzZY0Rhqe2kCOUNA2m69MpE8N+KHmT8mkJy906MMD3bcSGJ0aW3hA0LWxJTA6gUIYnUEBjF5gD4w0OVJi5gx2ww2jE31S1s6gCfOqq6cAAwDQ6bt8BrIOMgAAAABJRU5ErkJggg==');
+}
+
+.map-big {
+    background: url(../img/map-big.png);
+}
+
 .close-icon {
     width: 12px;
     height: 12px;
@@ -181,12 +197,12 @@ h3 {
 
 .prev-slide {
     left: 0;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFQTVDMDk2NEY2RUYxMUU0ODAyMUVGOUVDOUIwNUFERiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFQTVDMDk2NUY2RUYxMUU0ODAyMUVGOUVDOUIwNUFERiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkVBNUMwOTYyRjZFRjExRTQ4MDIxRUY5RUM5QjA1QURGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkVBNUMwOTYzRjZFRjExRTQ4MDIxRUY5RUM5QjA1QURGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+29diMwAAAQRJREFUeNqs1dENgyAQBmCPCTpCu4ErOEJffJYJGifBDfS5T92g3aCM4gg9CiYGFX6ESzBV268nBydVZ0O1HR8fPJqqf86UgYzuTBuMMpElNCUiNR/fPC7eHSkKIAPP0USZyMSINB+oBBKHQCQMJSDHUCKyD6nW/PjL44oiW8giJpPa+96HkSY0nQJAzBa4x4pLAPLflHGoALI8WreDmOhRZP1oowPXMbuMNA4VwPzyn8b2FuQRdgvN2bYf2dX78q7aytoKg5DreK7866hDWGj3J62vWD+CMaRDQhjas6MY9hax/9ocFgDOKJ7ZJJIgm5l0C7TCq4a9GIItGMNUq5bTnwADAHfVe83bKLwrAAAAAElFTkSuQmCC');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjMwNkJBRUY4RUExMUU0ODM4REI5MDFERTVGOTk4QiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjMwNkJBRkY4RUExMUU0ODM4REI5MDFERTVGOTk4QiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRCMzA2QkFDRjhFQTExRTQ4MzhEQjkwMURFNUY5OThCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRCMzA2QkFERjhFQTExRTQ4MzhEQjkwMURFNUY5OThCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FlwhRwAAAQlJREFUeNqs1ssRgjAQANANFVCCJXDmJCXYAdy5WIIVcMldOrAExwtXKcESKMENSUYMIWyW7EycAcwj/wWAG7KssdztpWAjABbpoR0acRCx0WcJEBUvkQBpsGu9SIHQBpuA7EOyLPD3iSUPISoyBnJzke0WbSPzmvFVESmQNcRE/qEDyA86iGhIlqryG8uJi9jp7zzIhOUasw0zU2F07udzV3VrgdY1PUa5GaPCea5eUGEXJxqUAHPXERvzrWwWtt60+o+VZwIU/AjNGgSwj/PkvMwctGNEYxezppZR+zDKCUnaPtQzexeLySJBLC5BBrC4BNkOo5nNiZ8gt1vW+JJB7NdIbS+/AgwAia13yQAVyRkAAAAASUVORK5CYII=');
 }
 
 .next-slide {
     right: 0;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyRjRCOEYxQ0Y2RjExMUU0QUE5N0Q3N0ZCMDBBNkI0NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyRjRCOEYxREY2RjExMUU0QUE5N0Q3N0ZCMDBBNkI0NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJGNEI4RjFBRjZGMTExRTRBQTk3RDc3RkIwMEE2QjQ0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJGNEI4RjFCRjZGMTExRTRBQTk3RDc3RkIwMEE2QjQ0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+6vGdmwAAASxJREFUeNqslb0VgjAQx0NYwBG0tsENpLPEhlo2kA3cICMEWzpLKh2BhgHcICN4wQAa8nXovXe8vOTx4+5yf46QwVh+AudkocUjhBAJSchhuyZNd8OCKECYggy2KDIKfgUX2j4aFqnUEnjewVfaeUXKuggH/QFGx1VZt/BMLWmewyOaIturyHQr4GOVP6Ipskf/0ty4ahNHH+nWdC300xNWmXaS9fvyPAi0ABY7K4iAxd4GCYRFwa076VG3VF5QhBLUu5+Ytiv7LqVIbVaGhpVKYFgQN0hI1uiIqRHv5TJPawM1EvRHiCy0CLs1N6S1i3YBxA1CQOwgJMT8G2H5BQuZR2SXwc4F+Y7IDil8kM8p4oJUYVPkD5AhNWEQIgpiG5BoiH7tiWtK+OwlwAChDozp/xnoUgAAAABJRU5ErkJggg==');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQjE5NkJBNEY4RUExMUU0ODA4M0VDNTEzQUI3M0I2NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQjE5NkJBNUY4RUExMUU0ODA4M0VDNTEzQUI3M0I2NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBCMTk2QkEyRjhFQTExRTQ4MDgzRUM1MTNBQjczQjY0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBCMTk2QkEzRjhFQTExRTQ4MDgzRUM1MTNBQjczQjY0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+xC6o3wAAASFJREFUeNpiYICBKVbzwZhMwAg3hIEhASq2gCHnWCKpBjEDDekH0hlIYgYMXrICDNse7yTFICYgXgjEH9DEC4AWJJBmUM6xC0Aam1fmk2IYE5jMObaBUsMYUXgQTdhiLhFo2QLiDaLAMEasomQYxojTrSQaxog3BLEbBkoqjtDYRos1XABicyOaqAAQ7wdaYkC8i5DzISILYXUZI9FJl4BhjCTlTDyGMZGYyQux5EtQmNWT4jVIIINKB1QACiNHRmoYAgyjD8R6bT4+Q4iLNewB/ACIDWGGEE6QuGMpENkQQnmNYCIkJveTZAiu8ohkQ7CVkGQZghrYU6wayDUEuYIkutzB7SLcJWEhsYbgS0cEaw1ivEayIZjlM4nVNDIACDAA2HV//wUumLkAAAAASUVORK5CYII=');
 }
 /** General styles end **/
 
@@ -233,18 +249,16 @@ header {
 .platforms {
     .floors-nav {
         margin: 3px 0 0 22px;
-        border-bottom: 2px solid $green;
+        border-bottom: 1px solid $green;
         .item {
             float: left;
             color: #868786;
-            cursor: pointer;
             font-size: 26px;
             margin: 0 12px 18px 0;
             text-align: center;
             width: 117px;
             &.active {
                 color: $green;
-                cursor: default;
                 font-family: "Pragmaticac Bold", Arial, sans-serif;
             }
         }
@@ -417,6 +431,7 @@ header {
                 .item {
                     .floor-icon {
                         z-index: 1;
+                        cursor: pointer;
                         &.position1 {
                             position: absolute;
                             top: 61px;
@@ -675,7 +690,7 @@ header {
     .title-top {
         margin: 45px 0 0 180px;
         padding-bottom: 19px;
-        border-bottom: 2px solid $green;
+        border-bottom: 1px solid $green;
         position: relative;
         h1 {
             font-size: 38px;
@@ -695,7 +710,7 @@ header {
         }
     }
     .organizers {
-        min-height: 154px;
+        min-height: 163px;
         margin-left: 181px;
         .item {
             float: left;
@@ -727,7 +742,7 @@ header {
     }
     .top-text {
         font: 48px/61px "Pragmaticac Light", Arial, sans-serif;
-        margin-bottom: 38px;
+        margin-bottom: 60px;
     }
     .green-wrap {
         background: $green;
@@ -739,7 +754,7 @@ header {
             ul {
                 margin-left: 312px;
                 li {
-                    font: 17px/20px "Pragmaticac Bold", Arial, sans-serif;
+                    font: 16px/20px "Pragmaticac", Arial, sans-serif;
                     padding-left: 31px;
                     margin-bottom: 17px;
                     position: relative;
@@ -748,13 +763,13 @@ header {
                     }
                     .round {
                         color: #fff;
-                        width: 9px;
-                        height: 9px;
+                        width: 7px;
+                        height: 7px;
                         @include border-radius(50%);
                         position: absolute;
                         top: 50%;
-                        margin-top: -5px;
-                        left: 0;
+                        margin-top: -4px;
+                        left: 2px;
                         background: #fff;
                     }
                 }
@@ -762,9 +777,9 @@ header {
         }
     }
     .participants {
-        padding: 55px 0 48px;
+        padding: 85px 0 81px;
         .line-wrap {
-            margin-bottom: 16px;
+            margin-bottom: 17px;
             .slide-title {
                 position: relative;
                 .participants-icon {
@@ -779,13 +794,13 @@ header {
                     line-height: 22px;
                     float: left;
                     cursor: pointer;
-                    border-bottom: 2px solid #009055;
+                    border-bottom: 1px solid #009055;
                 }
                 h3 {
                     position: absolute;
-                    top: 7px;
+                    top: 1px;
                     left: 0;
-                    font: 26px "Pragmaticac Bold", Arial, sans-serif;
+                    font: 21px "Pragmaticac Bold", Arial, sans-serif;
                     color: $green;
                 }
             }
@@ -794,6 +809,7 @@ header {
                 display: none;
                 margin: 28px 0 20px;
                 min-width: 980px;
+                position: relative;
                 @include box-shadow(0px 2px 10px rgba(0, 0, 0, 0.1));
                 .slider-wrap {
                     overflow: hidden;
@@ -808,17 +824,11 @@ header {
                             float: left;
                             width: 150px;
                             margin: 35px 71px 0 0;
-                            .img-wrap {
-                                width: 150px;
-                                height: 150px;
-                                img {
-                                    display: block;
-                                    margin: 0 auto;
-                                    max-width: 141px;
-                                    max-height: 141px;
-                                    @include border-radius(50%);
-                                    border: 4px solid $green;
-                                }
+                            img {
+                                display: block;
+                                margin: 0 auto;
+                                max-width: 149px;
+                                max-height: 149px;
                             }
                             .name {
                                 margin-top: 5px;
@@ -866,17 +876,18 @@ header {
         }
     }
     .place {
-        margin-bottom: 61px;
+        margin-bottom: 118px;
         .left {
             float: left;
             width: 315px;
             h3 {
-                font: 26px "Pragmaticac Bold", Arial, sans-serif;
-                color: #009055;
-                margin-bottom: 18px;
+                font: 21px "Pragmaticac Bold", Arial, sans-serif;
+                color: $green;
+                margin-bottom: 29px;
+                line-height: 17px;
             }
             .address {
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 23px;
                 .street {
                     font-family: "Pragmaticac Light", Arial, sans-serif;
@@ -919,7 +930,7 @@ header {
         }
     }
     footer {
-        height: 118px;
+        height: 40px;
     }
 }
 

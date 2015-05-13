@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    var resetFloors = function() {
+        $('.left .block').addClass('default').find('.item').addClass('default');
+        $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
+        $('.drop-down').hide();
+        $('.drop-down .subsidiary-item').removeClass('selected');
+        $('.floor .right').addClass('select');
+    }
+
 
     // hide/show content tabs
     $(".content-tab").hide().eq(0).show();
@@ -27,10 +35,12 @@ $(document).ready(function () {
 
     $('.slide-title .text').live("click", function (itemsCount) {
         slidesNum = 1;
-        $('.participants .line-wrap').removeClass('open');
+        $('.participants .line-wrap').removeClass('open').addClass('default');
+        $(this).parent().parent().removeClass('default');
+
         var seleced = $(this).parent().parent().addClass('open').find('.items-list'),
             itemsCount = seleced.find('.item').length,
-            wrapWidth = itemsCount * (itemWidth + itemLeftMargin) - itemLeftMargin;;
+            wrapWidth = itemsCount * (itemWidth + itemLeftMargin) - itemLeftMargin;
 
         if (itemsCount < 5) {
             seleced.css({
@@ -76,12 +86,11 @@ $(document).ready(function () {
         } else {
             $('.next-slide').show();
         }
-
     });
 
     $('.close-slider').live("click", function (itemsCount) {
         slidesNum = 1;
-        $('.participants .line-wrap').removeClass('open');
+        $('.participants .line-wrap').removeClass('open').removeClass('default');
     });
 
     $(".next-slide").click(function () {
@@ -94,8 +103,11 @@ $(document).ready(function () {
 
     // hide/show floors tab
     $(".platforms .floor").hide().eq(0).show();
-    /*
     $('.floors-nav .item').live("click", function () {
+        $('.floor .right').removeClass('select');
+        $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
+        $('.left .block').removeClass('default').find('.item').removeClass('default');
+        $('.drop-down').hide();
         var chack = $(this).hasClass('active');
         if (chack) {
             return false;
@@ -104,42 +116,49 @@ $(document).ready(function () {
             var tabCount = $(this).addClass("active").index('.floors-nav .item');
             $(".platforms .floor").hide().eq(tabCount).show();
         }
-    });*/
+    });
+
+    $('.second-floor').live("click", function () {
+        $(".platforms .floor").hide().eq(1).show();
+        $('.floors-nav .item').removeClass('active').eq(1).addClass("active");
+
+        $('#list11_active').removeClass('default').parent().parent().removeClass('default');
+
+    });
 
 
     // floors mapswitcher
     $('.block .nav .item').live("click", function () {
-        $('.floor.first .right').addClass('select');
-        $('.left .block').addClass('default');
-        $('.left .block .item').addClass('default');
-        $('.drop-down').hide();
+        resetFloors();
         $('.drop-down .ul li').removeClass('selected');
-        $('.right .wrapper .item').removeClass('show');
-        $('.wrapper .item .popup').removeClass('show');
-        $('.drop-down .subsidiary-item').removeClass('selected');
 
         $(this).removeClass('default').addClass('selected').parent().parent().removeClass('default');
         $(this).siblings('.drop-down').show().find('ul li:first').addClass('selected');
 
-        var popupid = $(this).attr('data-popup');
-        var popup = $("#" + popupid + "_active");
-        popup.find('.item').addClass('show').find('.popup').addClass('show');
+        var blockId = $(this).attr('data-popup');
+        var mapBlock = $("#" + blockId + "_active");
+        mapBlock.find('.item').addClass('show').find('.popup').addClass('show');
     });
 
     $('.drop-down .subsidiary-item').live("click", function () {
         $('.drop-down .subsidiary-item').removeClass('selected');
-        $(this).addClass('selected');
-        $('.right .wrapper .item').removeClass('show');
-        $('.right .wrapper .item .popup').removeClass('show');
+        $(this).addClass('selected').parent().parent().addClass('selected');
+        $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
 
-        var popupid = $(this).attr('data-popup');
-        var popup = $("#" + popupid + "_active");
-        popup.find('.item').addClass('show').find('.popup').addClass('show');
+        var blockId = $(this).attr('data-popup');
+        var mapBlock = $("#" + blockId + "_active");
+        mapBlock.find('.item').addClass('show').find('.popup').addClass('show');
     });
 
     $('.wrapper .item .floor-icon').live("click", function () {
+        resetFloors();
         $('.wrapper .item .popup').removeClass('show');
-        $(this).siblings('.popup').addClass('show');
+        $(this).parent().addClass('show').find('.popup').addClass('show');
+
+        var blockId = $(this).attr('data-list');
+        var listBlock = $("#" + blockId + "_active");
+        listBlock.removeClass('default').addClass('selected').parent().parent().removeClass('default').addClass('selected');
+        listBlock.parent().parent().show().siblings('li').removeClass('default');
     });
 
     $('.wrapper .close-icon').live("click", function () {
@@ -159,7 +178,16 @@ $(document).ready(function () {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
     }).addTo(map);*/
 
-    // big marker
+    // map nav
+    $('.map-nav li').live("click", function () {
+        var chack = $(this).hasClass('active');
+        if (chack) {
+            return false;
+        } else {
+            $('.map-nav li').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
 
 
     // icons
@@ -264,33 +292,33 @@ $(document).ready(function () {
     // events
     $('#mayakovskaya').live("click", function () {
         metroMarker.openPopup().addTo(map);
-        map.setView([59.932040, 30.356126]);
+        map.setView([59.932040, 30.356126], 16);
         deleteLines();
     });
 
     $('#moscow-station').live("click", function () {
         MoscowStationMarker.openPopup().addTo(map);
-        map.setView([59.930103, 30.361997]);
+        map.setView([59.930103, 30.361997], 16);
         deleteLines();
     });
 
     $('#finland-station').live("click", function () {
         FinlandStationMarker.openPopup().addTo(map);
-        map.setView([59.955539, 30.356345]);
+        map.setView([59.955539, 30.356345], 16);
         deleteLines();
         FinlandStationRoud.addTo(map);
     });
 
     $('#pulkovo-airport').live("click", function () {
         PulkovoAirportMarker.openPopup().addTo(map);
-        map.setView([59.797388, 30.273487]);
+        map.setView([59.797388, 30.273487], 16);
         deleteLines();
         AirportRoud.addTo(map);
     });
 
     $('#sea-port').live("click", function () {
         SeaPortMarker.openPopup().addTo(map);
-        map.setView([59.948942, 30.194941]);
+        map.setView([59.948942, 30.194941], 16);
         deleteLines();
         PortRoud.addTo(map);
     });

@@ -65,6 +65,10 @@ h3 {
     font-family: "Pragmaticac Bold", Arial, sans-serif;
 }
 
+.leaflet-control-attribution {
+    display: none;
+}
+
 .floor-icon {
     width: 41px;
     height: 41px;
@@ -94,6 +98,7 @@ h3 {
     &.toilet {
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAApCAYAAACoYAD2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowODQ2RTYwOUY2MTcxMUU0QkQ2MDlFMTk2OEJGRjRENSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowODQ2RTYwQUY2MTcxMUU0QkQ2MDlFMTk2OEJGRjRENSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjA4NDZFNjA3RjYxNzExRTRCRDYwOUUxOTY4QkZGNEQ1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjA4NDZFNjA4RjYxNzExRTRCRDYwOUUxOTY4QkZGNEQ1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+QOoEKgAAB89JREFUeNrEmQ9wk+Ud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');
     }
+    &.ladder {}
 }
 
 .participants-icon {
@@ -124,8 +129,8 @@ h3 {
 }
 
 .transport-icon {
-    width: 39px;
-    height: 39px;
+    width: 38px;
+    height: 38px;
     @include border-radius(50%);
     &.on-foot {
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMzc1RDg2NEY3QTQxMUU0OTREM0Q5NEFGNEE0MEQwMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMzc1RDg2NUY3QTQxMUU0OTREM0Q5NEFGNEE0MEQwMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYzNzVEODYyRjdBNDExRTQ5NEQzRDk0QUY0QTQwRDAzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYzNzVEODYzRjdBNDExRTQ5NEQzRDk0QUY0QTQwRDAzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+1b25kAAABHdJREFUeNrEmF9IFEEcx+cuyJcUQSU6jdQI9UUNUuK0OC2iVNAjMIkkhdBCIX2R6iGTQkgINU5RKdSIwIRUKKkHtfLPQxaevqhEKqRGpCDWi0/2m9nZdXZnZt07T/3B3N3u7c7vs9/fb3/zx4b8MY8zFD7zoCVBS4YWTZtqXmhr0D6R3+Vjvf64sfkIhYGuUzBfDINiwBoAXQgsnMfpgs92gzr+GoastAJpsxC+dj+UsqIkVrHBPziPM5mCJaPdsw6q4pp1OAVsCFoo2n3DL0+GCNC+z2CIRqZH9IddkmPmYCFRKDu1ZHu3cB1KyEUoKGS7K13gu3475apNcwyc1JyvRpuFXehtClSUiHhTj9nxWWgzswqtFHZbeZgKWqoEcEq5qJDeGptJnNyPu6Cduhmfbertbmw6+Q4LOkQeZqTghaKm3Opp9DjlqqW3QGg2Lz0kTli7FplkGtK0sOO6U/h4Jf+5meLRrEB2RjWXFAxCo9qtqTdodPWH5kymhCPmrPa7bX6UNFXFldxGM8DbRuWuCy+DDlgw22Adahl+gtK/dAghWGuiIV3d+IdK+6tIYwFHzt2TwYWCWEUsnHAEYDsgHU/3KQdzg8QpttcJF4UvTp5DCXnTwph2unTgkXYfVt3kJclV4JSQhorCyeZM6chTvTLUKbnGWCpiM7YSecm7dX5jHYWPNmuHnYmXZWXGpSonzLXWmDS9auuL+pozNyyEMd6L5ob0HTPHOLyO+BxZaJMx3DFRWEoYBzXs06u29FUMA6beSx4K1NIZHPcuT3K5KXpz7cJpUESc7nB59Tt/KzhRE5zAqOGBeqilAv3faM+Yh1VzUzSs2YWV3XHS0qCocx55SlE59gyj7jdro6ukHNl3NGQz+aNClUU7yTephYY8lcMd8R/OEXZC/AeEVi3IBApCqo4i+dPvpf3diLQ2RRTCTdBaZCFpNQhSWFOLtvJ0/rN08sDl2fov0ZULdrpCMn0BSGeSvGAh1LpoFtLspAL+pPhaAscvNP7Mcqd6ZMMNdKyGVrWXS5PSxCeFl7E2yRuNZ8gY7qNZmWDVkw03RpiWmXfCcI5k1XIzG0m5wWvdNTtdonFVtnSqm7sDz8kcSVe58yzM7N/foPwMD+b2cFMoMs4aRxA6srEvRCP39+K4rpJrpSu9DLVm1elzEGAIFFiDUYmoFDRzpYMDw5Y43smPIFtrWw2ul64ldeYeqNVmEcbhCU/V8ZQdO2ehWpYmtIlDj7sZbeY2oLjgw7x3ePDlyVfi5SJdcCtwyrKsUZTs4YOPpWWETNkPBitQk10oBysB0ylSlKGWyYYmrLK7/46s2xrxutXjnA/QloO/1gBCVcqKsHsfwbysajxc+Ri+oHgfwNaIX8Oq/wB3Wf9PL8o6imfGp/cQLIMKg8zhFMAPAGiTrsj2AMzKFliepe0J/3OsWAZmbfPQ44ymgIFUEe/NPQjctquySqveIWSHL1uvNp+7V5TMo2tLl4WcwhOLPjIKSTYJAwcn3s8T5eSCL5vTIvsvwABpBpQr+FkzCAAAAABJRU5ErkJggg==');
@@ -257,9 +262,11 @@ header {
             margin: 0 12px 18px 0;
             text-align: center;
             width: 117px;
+            cursor: pointer;
             &.active {
                 color: $green;
                 font-family: "Pragmaticac Bold", Arial, sans-serif;
+                cursor: default;
             }
         }
         .line {
@@ -273,11 +280,10 @@ header {
     .floor {
         margin-left: 22px;
         .left {
-            min-height: 864px;
             background: #f6f6f6;
             float: left;
             font-size: 14px;
-            padding: 41px 0 0 20px;
+            padding: 41px 0 165px 20px;
             width: 276px;
             .block {
                 margin-bottom: 36px;
@@ -306,6 +312,9 @@ header {
                                 top: 50%;
                                 margin-top: -19px;
                                 left: -2px;
+                                width: 38px;
+                                height: 38px;
+                                @include border-radius(50%);
                             }
                             &.selected {
                                 color: #000;
@@ -414,11 +423,11 @@ header {
                 font-size: 16px;
                 &.top {
                     top: 14px;
-                    left: 117px;
+                    left: 105px;
                 }
                 &.bottom {
-                    bottom: 19px;
-                    left: 216px;
+                    bottom: 18px;
+                    left: 189px;
                 }
             }
             &.select {
@@ -432,55 +441,89 @@ header {
                     .floor-icon {
                         z-index: 1;
                         cursor: pointer;
+                        position: absolute;
                         &.position1 {
-                            position: absolute;
                             top: 61px;
                             left: 82px;
                         }
                         &.position2 {
-                            position: absolute;
                             bottom: 337px;
                             right: 83px;
                         }
                         &.position3 {
-                            position: absolute;
                             bottom: 129px;
                             left: 158px;
                         }
                         &.position4 {
-                            position: absolute;
                             top: 80px;
                             left: 237px;
                         }
                         &.position5 {
-                            position: absolute;
                             top: 242px;
                             left: 237px;
                         }
                         &.position6 {
-                            position: absolute;
                             top: 394px;
                             left: 151px;
                         }
                         &.position7 {
-                            position: absolute;
                             top: 340px;
                             left: 99px;
                         }
                         &.position8 {
-                            position: absolute;
                             top: 367px;
                             right: 116px;
                         }
                         &.position9 {
-                            position: absolute;
                             top: 536px;
                             right: 59px;
                         }
                         &.position10 {
-                            position: absolute;
                             top: 556px;
                             right: 199px;
+                        }
+                        &.position11 {
+                            top: 195px;
+                            right: 303px;
+                        }
+                        &.position12 {
+                            top: 253px;
+                            right: 91px;
+                        }
+                        &.position13 {
+                            top: 255px;
+                            right: 131px;
+                            background: red;
+                        }
+                        &.position14 {
+                            top: 279px;
+                            right: 459px;
+                            background: red;
+                        }
+                        &.position15 {
+                            top: 225px;
+                            right: 216px;
+                            background: red;
+                        }
+                        &.position16 {
+                            top: 357px;
+                            right: 528px;
+                            background: red;
+                        }
+                        &.position17 {
+                            top: 122px;
+                            right: 332px;
+                            background: red;
+                        }
+                        &.position18 {
+                            top: 122px;
+                            right: 88px;
+                            background: red;
+                        }
+                        &.position19 {
+                            bottom: 257px;
+                            left: 104px;
+                            background: red;
                         }
                     }
                     .popup {
@@ -510,6 +553,9 @@ header {
                                 margin-bottom: 17px;
                                 &:last-child {
                                     margin-bottom: 0;
+                                }
+                                .second-floor {
+                                    cursor: pointer;
                                 }
                             }
                         }
@@ -589,6 +635,55 @@ header {
                             .arrow-bottom {
                                 bottom: -12px;
                                 right: 19px;
+                            }
+                        }
+                        &.position7 {
+                            top: 47px;
+                            left: -96px;
+                            .arrow-right {
+                                top: 159px;
+                                right: -13px;
+                            }
+                        }
+                        &.position8 {
+                            top: 242px;
+                            left: -26px;
+                            .arrow-bottom {
+                                top: 89px;
+                                right: 133px;
+                            }
+                        }
+                        &.position9 {
+                            top: 74px;
+                            left: -12px;
+                            .arrow-right {
+                                top: 60px;
+                                right: -13px;
+                            }
+                        }
+                        &.position10 {
+                            top: 13px;
+                            left: 372px;
+                            .arrow-bottom {
+                                top: 88px;
+                                right: 90px;
+                            }
+                        }
+                        &.position11 {
+                            top: 485px;
+                            left: 161px;
+                            .arrow-left {
+                                top: 50px;
+                                left: -13px;
+                            }
+                        }
+                        &.small {
+                            width: 200px;
+                            .title {
+                                margin-bottom: 10px;
+                            }
+                            .body {
+                                padding: 0 20px 10px;
                             }
                         }
                     }
@@ -674,6 +769,98 @@ header {
                         }
                         .bg-block {
                             display: block;
+                        }
+                    }
+                }
+            }
+        }
+        &.second {
+            .left {
+                .block {
+                    ul {
+                        &.nav {
+                            li {
+                                margin-bottom: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+            .right {
+                width: 583px;
+                height: 821px;
+                margin: 44px 17px 0 0;
+                background: url(../img/floor2-bg-default.png) no-repeat;
+                &.select {
+                    background: url(../img/floor2-bg.png) no-repeat;
+                }
+                .wrapper {
+                    .item {
+                        .bg-block {
+                            background: url('../img/floor2-bg-default.png') no-repeat;
+                            &.position1 {
+                                width: 17px;
+                                height: 30px;
+                                top: 197px;
+                                left: 258px;
+                                background-position: -258px -197px;
+                            }
+                            &.position2 {
+                                width: 46px;
+                                height: 43px;
+                                top: 238px;
+                                left: 449px;
+                                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAArCAYAAAAHdLqEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMjQ5QzUzQkY5OUMxMUU0OEM4MUU3OTI5MjU3NTlDNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMjQ5QzUzQ0Y5OUMxMUU0OEM4MUU3OTI5MjU3NTlDNCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUyNDlDNTM5Rjk5QzExRTQ4QzgxRTc5MjkyNTc1OUM0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUyNDlDNTNBRjk5QzExRTQ4QzgxRTc5MjkyNTc1OUM0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+TT3H5AAAAShJREFUeNrs0z0OQUEQwPF5k1d4CtE+FeICCq0QiajcwBneAdQO4AIaF1CrRKFzBQpKhSiIaolEovDxPnZ2ZhJT7/zzS3bXg0nfgJ+Dn3M9QVDrwbkVeSBgPJhFZlCqxzo83S4BilUw3SE7HpMcHlSaAMcNePORUQWXhMc0SxLwmHaRG49ZljnxmDXAhUcbEQ482gq5xqPNmEs82g66wiNF1AUeqcLUeKS8Tko8Un8iKjw5nArvBE6Bdwa3jXcKt4l3DreFZ4HbwLPBs+JZ4Vnw7PC0eBHwNHgx8KR4UfAkeHHwuHiR8Dh4sfBfeNHwb3jx8E94FfB3eDXwV3x+MTaq4E/8ZbcCdfDHFEKlcG1v/A/nhZ8P+tR3s98pt2G6X6tyB2EDbgIMAGMYtev+giGWAAAAAElFTkSuQmCC');
+                            }
+                            &.position3 {
+                                width: 36px;
+                                height: 43px;
+                                top: 238px;
+                                left: 412px;
+                                background-position: -412px -238px;
+                            }
+                            &.position4 {
+                                width: 75px;
+                                height: 54px;
+                                top: 272px;
+                                left: 67px;
+                                background-position: -67px -272px;
+                            }
+                            &.position5 {
+                                width: 103px;
+                                height: 33px;
+                                top: 216px;
+                                left: 301px;
+                                background-position: -301px -216px;
+                            }
+                            &.position6 {
+                                width: 63px;
+                                height: 102px;
+                                top: 342px;
+                                left: 0px;
+                                background-position: -1px -342px;
+                            }
+                            &.position7 {
+                                width: 110px;
+                                height: 105px;
+                                top: 87px;
+                                left: 180px;
+                                background-position: -180px -87px;
+                            }
+                            &.position8 {
+                                width: 123px;
+                                height: 105px;
+                                top: 87px;
+                                left: 405px;
+                                background-position: -405px -87px;
+                            }
+                            &.position9 {
+                                width: 260px;
+                                height: 189px;
+                                top: 444px;
+                                left: 0px;
+                                background-position: 0px -444px;
+                            }
                         }
                     }
                 }
@@ -873,6 +1060,14 @@ header {
                     }
                 }
             }
+            &.default {
+                .text {
+                    opacity: 0.4;
+                }
+                .participants-icon {
+                    opacity: 0.4;
+                }
+            }
         }
     }
     .place {
@@ -894,6 +1089,10 @@ header {
                     display: block;
                     margin-top: 4px;
                 }
+                a {
+                    text-decoration: none;
+                    color: #000;
+                }
             }
             ul {
                 font: 14px/18px "Pragmaticac Light", Arial, sans-serif;
@@ -903,10 +1102,14 @@ header {
                     margin-bottom: 17px;
                     cursor: pointer;
                     position: relative;
+                    opacity: 0.4;
                     .transport-icon {
                         position: absolute;
                         left: 0;
                         top: 5px;
+                    }
+                    &.active {
+                        opacity: 1;
                     }
                 }
             }

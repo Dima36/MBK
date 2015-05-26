@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var resetFloors = function() {
+    var resetFloors = function () {
         $('.left .block').addClass('default').find('.item').addClass('default');
         $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
         $('.drop-down').hide();
@@ -19,16 +19,16 @@ $(document).ready(function () {
             $('header .nav .item').removeClass("active");
             var tabCount = $(this).addClass("active").index('header .nav .item');
             $(".content-tab").hide().eq(tabCount).show();
-            if (tabCount > 0) {
-                $('.logo-min').show();
-            } else {
-                $('.logo-min').hide();
-            }
         }
     });
 
+    $('.BDK-tab').live("click", function () {
+        $('header .nav .item').removeClass("active").eq(2).addClass("active");
+        $(".content-tab").hide().eq(2).show();
+    });
 
-    // participants slider
+
+    /* participants slider
     var itemWidth = parseFloat($('.items-list. .item').css('width')),
         itemLeftMargin = parseFloat($('.items-list. .item').css('margin-right')),
         slidesNum = 1;
@@ -99,13 +99,13 @@ $(document).ready(function () {
     $(".prev-slide").click(function () {
         slidesNum--;
     })
-
+*/
 
     // hide/show floors tab
     $(".platforms .floor").hide().eq(0).show();
     $('.floors-nav .item').live("click", function () {
         $('.floor .right').removeClass('select');
-        $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
+        $('.right .wrapper .item').removeClass('show').removeClass('default').find('.popup').removeClass('show');
         $('.left .block').removeClass('default').find('.item').removeClass('default');
         $('.drop-down').hide();
         var chack = $(this).hasClass('active');
@@ -119,41 +119,44 @@ $(document).ready(function () {
     });
 
     $('.second-floor').live("click", function () {
-        $(".platforms .floor").hide().eq(1).show();
+        $(".platforms").find(".floor").hide().eq(1).show().siblings('.floors-nav .item').removeClass("active").eq(1).addClass("active");
+        $('.left .block').addClass('default').find('.item').addClass('default');
+        $('.floor .right').addClass('select').find('.item').addClass('default');
         $('.floors-nav .item').removeClass('active').eq(1).addClass("active");
-
         $('#list11_active').removeClass('default').parent().parent().removeClass('default');
-
+        $('#wrapper11_active').find('.item').removeClass('default').addClass('show').find('.popup').addClass('show');
+        $('header .nav .item').removeClass("active").eq(1).addClass("active");
+        $(".content-tab").hide().eq(1).show();
     });
-
 
     // floors mapswitcher
     $('.block .nav .item').live("click", function () {
         resetFloors();
         $('.drop-down .ul li').removeClass('selected');
-
+        $('.wrapper .item').addClass('default');
         $(this).removeClass('default').addClass('selected').parent().parent().removeClass('default');
         $(this).siblings('.drop-down').show().find('ul li:first').addClass('selected');
 
         var blockId = $(this).attr('data-popup');
         var mapBlock = $("#" + blockId + "_active");
-        mapBlock.find('.item').addClass('show').find('.popup').addClass('show');
+        mapBlock.find('.item').removeClass('default').addClass('show').find('.popup').addClass('show');
     });
 
     $('.drop-down .subsidiary-item').live("click", function () {
         $('.drop-down .subsidiary-item').removeClass('selected');
         $(this).addClass('selected').parent().parent().addClass('selected');
         $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
+        $('.wrapper .item .floor-icon').addClass('default');
 
         var blockId = $(this).attr('data-popup');
         var mapBlock = $("#" + blockId + "_active");
-        mapBlock.find('.item').addClass('show').find('.popup').addClass('show');
+        mapBlock.find('.item').removeClass('default').addClass('show').find('.popup').addClass('show');
     });
 
     $('.wrapper .item .floor-icon').live("click", function () {
         resetFloors();
-        $('.wrapper .item .popup').removeClass('show');
-        $(this).parent().addClass('show').find('.popup').addClass('show');
+        $('.wrapper .item').addClass('default').find('.popup').removeClass('show');
+        $(this).parent().removeClass('default').addClass('show').find('.popup').addClass('show');
 
         var blockId = $(this).attr('data-list');
         var listBlock = $("#" + blockId + "_active");
@@ -167,28 +170,50 @@ $(document).ready(function () {
 
 
     // MAP
+    L.Map = L.Map.extend({
+        openPopup: function (popup) {
+            if (!this.doublePopup) {
+                this.closePopup();
+            } else {
+                this._popup2 = this._popup;
+            }
+            this._popup = popup;
+            return this.addLayer(popup).fire('popupopen', {
+                popup: this._popup
+            });
+        },
+        closePopup: function (popup) {
+            if (!popup || popup === this._popup) {
+                popup = this._popup;
+                this._popup = null;
+            }
+            if (popup) {
+                this.removeLayer(popup);
+                popup._isOpen = false;
+            }
+            this._popup2 && this.removeLayer(this._popup2);
+            return this;
+        }
+    });
+
     var map = L.map('map').setView([59.932040, 30.356126], 16);
 
     L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
         attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    /*L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-    }).addTo(map);*/
-
     // map nav
     $('.map-nav li').live("click", function () {
-        var chack = $(this).hasClass('active');
-        if (chack) {
-            return false;
-        } else {
-            $('.map-nav li').removeClass('active');
-            $(this).addClass('active');
-        }
+        $('.cultural-event .item').removeClass('default').find('span').removeClass('active');
+        $('.map-nav li').removeClass('selected').addClass('default');
+        $(this).removeClass('default').addClass('selected');
     });
 
+    $('.cultural-event .item').live("click", function () {
+        $('.map-nav li').removeClass('default');
+        $('.cultural-event .item').addClass('default');
+        $(this).removeClass('default');
+    });
 
     // icons
     var metroIcon = L.divIcon({
@@ -214,16 +239,30 @@ $(document).ready(function () {
         MapBig = L.divIcon({
             className: 'map-big',
             iconSize: [43, 63]
+        }),
+        MariinskyTheatreIcon = L.divIcon({
+            className: 'cultural-icon theater',
+            iconSize: [39, 39]
+        }),
+        MuseumReserveIcon = L.divIcon({
+            className: 'cultural-icon museum',
+            iconSize: [39, 39]
+        }),
+        DostoevskyHotelIcon = L.divIcon({
+            className: 'cultural-icon green-circle',
+            iconSize: [14, 14]
         });
 
-    L.marker([59.932050, 30.350842], {
+    var mainMarker = L.marker([59.932050, 30.350842], {
         icon: MapBig
     }).addTo(map);
+
+    var test = false;
 
     // markers
     var metroMarker = L.marker([59.931776, 30.354581], {
             icon: metroIcon
-        }).bindPopup("ст. метро<br>«Маяковская»").addTo(map),
+        }).bindPopup(test ? 'alksdjf;lkasjd;flasdf' : "ст. метро<br>«Маяковская»").addTo(map),
         MoscowStationMarker = L.marker([59.930103, 30.361997], {
             icon: MoscowStationIcon
         }).bindPopup("Московский<br>ж/д вокзал").addTo(map),
@@ -235,9 +274,104 @@ $(document).ready(function () {
         }).bindPopup("Аэропорт<br>«Пулково»").addTo(map),
         SeaPortMarker = L.marker([59.948942, 30.194941], {
             icon: SeaPortIcon
-        }).bindPopup("Пассажирский<br>морской терминал").addTo(map);
+        }).bindPopup("Пассажирский<br>морской терминал").addTo(map),
+        MariinskyTheatreMarker = L.marker([59.925646, 30.295996], {
+            icon: MariinskyTheatreIcon
+        }).bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").addTo(map),
+        MuseumReserveMarker = L.marker([59.886298, 29.908587], {
+            icon: MuseumReserveIcon
+        }).bindPopup("<p>Отправление шаттлов<br>от Летнего дворца: <span class='bolder'>23:30 — 00:00</span><br>Интервал отправления: <span class='bolder'>20 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").addTo(map),
+        DostoevskyHotelMarker = L.marker([59.928468, 30.346480], {
+            icon: DostoevskyHotelIcon
+        }).bindPopup("Отправление шаттлов<br>до Мариинского театра: <span class='bolder'>18:15</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").addTo(map);
 
 
+    // Icons resize
+    map.on('zoomend', changeIconSize);
+
+    function changeIconSize(e) {
+
+        // this is the default size (of the default icon); it should be known beforehand;
+        var defaultIconSize = new L.Point(39, 39),
+            defaultBigIconSize = new L.Point(43, 63);
+
+        // use leaflet's internal methods to scale the size (a bit overkill for this case...)
+        var transformation = new L.Transformation(1, 0, 1, 0);
+
+        var currentZoom = map.getZoom();
+        var newIconSize = transformation.transform(defaultIconSize, sizeFactor(currentZoom));
+        var newBigIconSize = transformation.transform(defaultBigIconSize, sizeFactor(currentZoom));
+
+        // finally, declare a new icon and update the marker
+        var newMetroIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'transport-icon on-foot'
+        });
+
+        var newMoscowStationIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'transport-icon train'
+        });
+
+        var newFinlandStationIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'transport-icon train'
+        });
+
+        var newPulkovoAirportIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'transport-icon plane'
+        });
+
+        var newSeaPortIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'transport-icon ship'
+        });
+
+        var newMariinskyTheatreIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'cultural-icon theater'
+        });
+
+        var newMuseumReserveIcon = new L.divIcon({
+            iconSize: newIconSize,
+            className: 'cultural-icon museum'
+        });
+
+        var newMapBig = new L.divIcon({
+            iconSize: newBigIconSize,
+            className: 'map-big'
+        });
+
+        metroMarker.setIcon(newMetroIcon);
+        MoscowStationMarker.setIcon(newMoscowStationIcon);
+        FinlandStationMarker.setIcon(newFinlandStationIcon);
+        PulkovoAirportMarker.setIcon(newPulkovoAirportIcon);
+        SeaPortMarker.setIcon(newSeaPortIcon);
+        MariinskyTheatreMarker.setIcon(newMariinskyTheatreIcon);
+        MuseumReserveMarker.setIcon(newMuseumReserveIcon);
+        mainMarker.setIcon(newMapBig);
+    }
+
+    function sizeFactor(zoom) {
+        if (zoom >= 16) return 1.0;
+        else if (zoom == 15) return 0.95;
+        else if (zoom == 14) return 0.85;
+        else if (zoom == 13) return 0.75;
+        else if (zoom == 12) return 0.65;
+        else if (zoom == 11) return 0.55;
+        else // zoom >= 17
+            return 0.50;
+    }
+
+
+
+
+
+
+
+
+    // Rouds
     var pointA = new L.LatLng(59.955272, 30.356104),
         pointB = new L.LatLng(59.955334, 30.355697),
         pointC = new L.LatLng(59.955306, 30.355104),
@@ -275,34 +409,114 @@ $(document).ready(function () {
         pointBS = new L.LatLng(59.938100, 30.312610),
         pointBT = new L.LatLng(59.937056, 30.312421),
 
+        pointCA = new L.LatLng(59.932256, 30.350835),
+        pointCB = new L.LatLng(59.936354, 30.317606),
+        pointCC = new L.LatLng(59.935214, 30.316424),
+        pointCD = new L.LatLng(59.932774, 30.309660),
+        pointCE = new L.LatLng(59.930344, 30.298903),
+        pointCF = new L.LatLng(59.928380, 30.294788),
+        pointCG = new L.LatLng(59.925896, 30.297025),
+
+        pointEA = new L.LatLng(59.928359, 30.347197),
+        pointEB = new L.LatLng(59.929356, 30.347699),
+        pointEC = new L.LatLng(59.932612, 30.347897),
+
+        pointFA = new L.LatLng(59.932255, 30.350835),
+        pointFB = new L.LatLng(59.930962, 30.360836),
+        pointFC = new L.LatLng(59.914991, 30.350235),
+        pointFD = new L.LatLng(59.915740, 30.345177),
+        pointFE = new L.LatLng(59.915707, 30.341385),
+        pointFF = new L.LatLng(59.915375, 30.339878),
+        pointFG = new L.LatLng(59.908761, 30.321486),
+        pointFH = new L.LatLng(59.908443, 30.319803),
+        pointFI = new L.LatLng(59.908640, 30.300596),
+        pointFJ = new L.LatLng(59.898639, 30.299569),
+        pointFK = new L.LatLng(59.897050, 30.299966),
+        pointFL = new L.LatLng(59.896930, 30.299923),
+        pointFM = new L.LatLng(59.895175, 30.300512),
+        pointFN = new L.LatLng(59.895061, 30.300613),
+        pointFO = new L.LatLng(59.890223, 30.302223),
+        pointFP = new L.LatLng(59.890135, 30.302180),
+        pointFQ = new L.LatLng(59.889142, 30.302372),
+        pointFR = new L.LatLng(59.887277, 30.302242),
+        pointFS = new L.LatLng(59.883939, 30.300759),
+        pointFT = new L.LatLng(59.875577, 30.298411),
+        pointFU = new L.LatLng(59.875463, 30.294876),
+        pointFV = new L.LatLng(59.874993, 30.293860),
+        pointFW = new L.LatLng(59.873340, 30.293266),
+        pointFX = new L.LatLng(59.872962, 30.293506),
+        pointFY = new L.LatLng(59.872540, 30.294261),
+        pointFZ = new L.LatLng(59.867817, 30.293350),
+        pointFZA = new L.LatLng(59.866717, 30.293235),
+        pointFZB = new L.LatLng(59.859798, 30.291454),
+        pointFZC = new L.LatLng(59.853311, 30.290510),
+        pointFZD = new L.LatLng(59.848741, 30.288321),
+        pointFZE = new L.LatLng(59.842447, 30.283085),
+        pointFZF = new L.LatLng(59.839191, 30.281197),
+        pointFZG = new L.LatLng(59.835719, 30.279695),
+        pointFZH = new L.LatLng(59.834835, 30.277163),
+        pointFZI = new L.LatLng(59.834921, 30.274717),
+        pointFZJ = new L.LatLng(59.833821, 30.265318),
+        pointFZK = new L.LatLng(59.824275, 30.225770),
+        pointFZL = new L.LatLng(59.818083, 30.212080),
+        pointFZM = new L.LatLng(59.813876, 30.203025),
+        pointFZN = new L.LatLng(59.811955, 30.195300),
+        pointFZO = new L.LatLng(59.809495, 30.182468),
+        pointFZP = new L.LatLng(59.805934, 30.176417),
+        pointFZQ = new L.LatLng(59.801336, 30.169379),
+        pointFZR = new L.LatLng(59.799760, 30.160538),
+        pointFZS = new L.LatLng(59.800559, 30.152342),
+        pointFZT = new L.LatLng(59.843391, 30.031079),
+        pointFZU = new L.LatLng(59.843531, 30.031014),
+        pointFZV = new L.LatLng(59.844646, 30.031765),
+        pointFZW = new L.LatLng(59.848411, 30.035639),
+        pointFZX = new L.LatLng(59.852718, 30.037289),
+        pointFZY = new L.LatLng(59.860403, 29.994170),
+        pointFZZ = new L.LatLng(59.871399, 29.968411),
+        pointFZZA = new L.LatLng(59.880402, 29.906396),
+
         PointsListA = [pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH],
         PointsListB = [pointAA, pointAB, pointAC, pointAD, pointAE, pointG, pointH],
-        PointsListC = [pointBA, pointBB, pointBC, pointBD, pointBE, pointBF, pointBG, pointBH, pointBI, pointBJ, pointBK, pointBL, pointBM, pointBN, pointBO, pointBP, pointBQ, pointBR, pointBS, pointBT, pointH];
+        PointsListC = [pointBA, pointBB, pointBC, pointBD, pointBE, pointBF, pointBG, pointBH, pointBI, pointBJ, pointBK, pointBL, pointBM, pointBN, pointBO, pointBP, pointBQ, pointBR, pointBS, pointBT, pointH],
+        PointsListD = [pointCA, pointCB, pointCC, pointCD, pointCE, pointCF, pointCG],
+        PointsListE = [pointEA, pointEB, pointEC, pointCB, pointCC, pointCD, pointCE, pointCF, pointCG],
+        PointsListF = [pointFA, pointFB, pointFC, pointFD, pointFE, pointFF, pointFG, pointFH, pointFI, pointFJ, pointFK, pointFL, pointFM, pointFN, pointFO, pointFP, pointFQ, pointFR, pointFS, pointFT, pointFU, pointFV, pointFW, pointFX, pointFY, pointFZ, pointFZA, pointFZB, pointFZC, pointFZD, pointFZE, pointFZF, pointFZG, pointFZH, pointFZI, pointFZJ, pointFZK, pointFZL, pointFZM, pointFZN, pointFZO, pointFZP, pointFZQ, pointFZR, pointFZS, pointFZT, pointFZU, pointFZV, pointFZW, pointFZX, pointFZY, pointFZZ, pointFZZA];
 
     var FinlandStationRoud = new L.Polyline(PointsListA),
         AirportRoud = new L.Polyline(PointsListB),
-        PortRoud = new L.Polyline(PointsListC);
+        PortRoud = new L.Polyline(PointsListC),
+        CorinthiaToMariinskyRoud = new L.Polyline(PointsListD),
+        DostoevskyToMariinskyRoud = new L.Polyline(PointsListE),
+        CorinthiaToMuseumReserveRoud = new L.Polyline(PointsListF);
 
     var deleteLines = function () {
         map.removeLayer(FinlandStationRoud);
         map.removeLayer(AirportRoud);
         map.removeLayer(PortRoud);
+        map.removeLayer(CorinthiaToMariinskyRoud);
+        map.removeLayer(DostoevskyToMariinskyRoud);
+        map.removeLayer(CorinthiaToMuseumReserveRoud);
     }
+
 
     // events
     $('#mayakovskaya').live("click", function () {
+        map.closePopup();
+        $(".leaflet-popup-close-button").click();
         metroMarker.openPopup().addTo(map);
         map.setView([59.932040, 30.356126], 16);
         deleteLines();
     });
 
     $('#moscow-station').live("click", function () {
+        map.closePopup();
         MoscowStationMarker.openPopup().addTo(map);
         map.setView([59.930103, 30.361997], 16);
         deleteLines();
     });
 
     $('#finland-station').live("click", function () {
+        map.closePopup();
         FinlandStationMarker.openPopup().addTo(map);
         map.setView([59.955539, 30.356345], 16);
         deleteLines();
@@ -310,6 +524,7 @@ $(document).ready(function () {
     });
 
     $('#pulkovo-airport').live("click", function () {
+        map.closePopup();
         PulkovoAirportMarker.openPopup().addTo(map);
         map.setView([59.797388, 30.273487], 16);
         deleteLines();
@@ -317,9 +532,67 @@ $(document).ready(function () {
     });
 
     $('#sea-port').live("click", function () {
+        map.closePopup();
         SeaPortMarker.openPopup().addTo(map);
         map.setView([59.948942, 30.194941], 16);
         deleteLines();
         PortRoud.addTo(map);
+    });
+
+    var CorinthiaTheater = function () {
+            map.closePopup();
+            deleteLines();
+            map.setView([59.932980, 30.322057], 13);
+            $('#corinthia-museum').removeClass('active');
+            $('#dostoevsky').removeClass('active');
+            map.doublePopup = true;
+            mainMarker.bindPopup("<p>Отправление шаттлов<br>до Мариинского театра: <span class='bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+            MariinskyTheatreMarker.bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург» <br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+            CorinthiaToMariinskyRoud.addTo(map);
+        },
+        CorinthiaMuseum = function () {
+            map.closePopup();
+            deleteLines();
+            map.setView([59.931092, 30.127679], 10);
+            $('#corinthia-theater').removeClass('active');
+            $('#dostoevsky').removeClass('active');
+            map.doublePopup = true;
+            mainMarker.bindPopup("<p>Отправление шаттлов<br>до Летнего дворца: <span class='bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+            MuseumReserveMarker.openPopup().addTo(map);
+            CorinthiaToMuseumReserveRoud.addTo(map);
+        }
+
+
+    $('#to-theater').live("click", function () {
+        $('#corinthia-theater').addClass('active');
+        CorinthiaTheater();
+    });
+
+    $('#corinthia-theater').live("click", function () {
+        $(this).addClass('active');
+        CorinthiaTheater();
+    });
+
+    $('#dostoevsky').live("click", function () {
+        map.closePopup();
+        deleteLines();
+        $('#corinthia-museum').removeClass('active');
+        $('#corinthia-theater').removeClass('active');
+        $(this).addClass('active');
+        map.setView([59.927561, 30.332357], 14);
+        map.doublePopup = true;
+        DostoevskyHotelMarker.openPopup().addTo(map);
+        MariinskyTheatreMarker.bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+        DostoevskyToMariinskyRoud.addTo(map);
+    });
+
+    $('#to-museum').live("click", function () {
+        $('#corinthia-museum').addClass('active');
+        CorinthiaMuseum();
+    });
+
+    $('#corinthia-museum').live("click", function () {
+        $(this).addClass('active');
+        CorinthiaMuseum();
     });
 });

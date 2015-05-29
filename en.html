@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>МБК</title>
+    <title>IBC</title>
     <link href="css/leaflet.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/retina.css" rel="stylesheet">
@@ -17,89 +17,121 @@
     <![endif]-->
 </head>
 
-<body>
-    <header class="content-center clearfix">
+<body data-langRu="eng">
+    <header class="clearfix">
+        <div class="language">
+            <div class="item eng lang-icon"></div>
+            <a href="/">
+                <div class="item rus lang-icon"></div>
+            </a>
+        </div>
         <ul class="nav clearfix">
-            <li class="item active">
-                Place
-                <br>проведения
+            <li class="item active one">
+                Venue
             </li>
             <li class="line"></li>
             <li class="item one">
-                План площадки
+                Venue layout
             </li>
             <li class="line"></li>
             <li class="item">
-                Биржа деловых
-                <br>контактов
+                Business
+                <br>Networking Platform
             </li>
         </ul>
         <div class="logo-min bold">
-            XXIV Международный
-            <br> Банковский Конгресс
+            XXIV International
+            <br>Banking Congress
         </div>
     </header>
     <div class="content-tab content-center event clearfix">
-        <h2>Место<br>проведения</h2>
+        <h2 class="eng">Venue</h2>
         <section class="place clearfix">
             <div class="left">
                 <div class="address">
-                    Отель
+                    <a class="bold" href="http://www.corinthia.com/hotels/stpetersburg/" target="_blank">Corinthia<br>Hotel St. Petersburg</a>
                     <br>
-                    <a class="bold" href="http://www.corinthia.com/hotels/stpetersburg/" target="_blank">«Коринтия Санкт-Петербург»</a>
-                    <br>
-                    <span class="street">Невский пр., д. 57</span>
+                    <span class="street">57, Nevsky pr.</span>
                 </div>
                 <ul class="map-nav">
                     <li id="mayakovskaya">
                         <span class="transport-icon on-foot"></span>
-                        <span class="bold">2 мин. пешком</span>
-                        <br>от ст. метро
-                        <br>«Маяковская»
+                        <span class="bold">2-minute walk</span>
+                        <br>from Mayakovskaya
+                        <br>Metro Station
                     </li>
                     <li id="moscow-station">
                         <span class="transport-icon train"></span>
-                        <span class="bold">5 мин. на машине</span>
-                        <br>от Московского
-                        <br>ж/д вокзала
+                        <span class="bold">5-minute drive</span>
+                        <br>from Moskovsky
+                        <br>Rail Terminal
                     </li>
                     <li id="finland-station">
-                        <span class="transport-icon train"></span>
-                        <span class="bold">20 мин. на машине</span>
-                        <br>от Финляндского
-                        <br>ж/д вокзала
+                        <span class="transport-icon train2"></span>
+                        <span class="bold">20-minute drive</span>
+                        <br>from Finlyandsky
+                        <br>Rail Terminal
                     </li>
-                    <li id="pulkovo-airport">
+                    <li id="pulkovo-airport" class="plane-eng">
                         <span class="transport-icon plane"></span>
-                        <span class="bold">1 час на машине</span>
-                        <br>от аэропорта
-                        <br>«Пулково»
+                        <span class="bold">1-hour drive</span>
+                        <br>from Pulkovo Airport
                     </li>
                     <li id="sea-port">
                         <span class="transport-icon ship"></span>
-                        <span class="bold">50 мин. на машине</span>
-                        <br>от Морского
-                        <br>пассажирского
-                        <br>терминала
+                        <span class="bold">50-minute drive</span>
+                        <br>from the Marine
+                        <br>Terminal
                     </li>
                 </ul>
             </div>
             <div class="right">
                 <div id="map" class="map"></div>
                 <div class="map-label"></div>
+                <div class="cultural-event clearfix">
+                    <h3>Cultural programme venues</h3>
+                    <div class="item palace">
+                        <div id="to-museum" class="place green-hover">
+                            <div class="cultural-icon museum"></div>
+                            <span class="bold">Summer Palace</span>
+                            <br>130/7, Sankt-Peterburgskoye Shosse
+                        </div>
+                        <div class="get-here">
+                            <span class="bold title">Directions:</span>
+                            <br>From <span id="corinthia-museum" class="green-hover">Corinthia Hotel</span>
+                            <br>St. Petersburg
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div id="to-theater" class="place green-hover">
+                            <div class="cultural-icon theater"></div>
+                            <span class="bold">Mariinsky Theatre</span>
+                            <br>1, Teatralnaya pl.
+                        </div>
+                        <div class="get-here">
+                            <span class="bold title">Directions:<br></span>From <span id="corinthia-theater" class="green-hover">Corinthia Hotel</span>
+                            <br> St. Petersburg or
+                            <br><span id="dostoevsky" class="green-hover">Hotel Dostoevsky</span>
+                        </div>
+                    </div>
+                    <div class="taxi">
+                        If you miss the shuttle, we suggest using the city’s taxi services
+                        <br>by calling <span class="bold">+7 (812) 326 0000</span>
+                    </div>
+                </div>
             </div>
         </section>
         <a target="_blank" href="http://infographicsmag.ru/">
-            <div class="developed">Разработка:</div>
+            <div class="developed">Design by:</div>
         </a>
     </div>
     <div class="content-tab platforms content-center">
-        <ul class="floors-nav clearfix">
-            <li class="active item">1 этаж</li>
+        <ul class="floors-nav clearfix eng">
+            <li class="active item">Ground floor</li>
             <li class="line"></li>
-            <li class="item">2 этаж</li>
+            <li class="item">First floor</li>
             <li class="line"></li>
-            <li class="item">3 этаж</li>
+            <li class="item">Second floor</li>
         </ul>
 
 
@@ -107,64 +139,64 @@
         <div class="floor first clearfix">
             <div class="left">
                 <div class="block congress">
-                    <h3>Конгресс</h3>
+                    <h3>Congress</h3>
                     <ul class="nav">
                         <li id="list1_active" class="one item" data-popup="wrapper1">
-                            <i class="floor-icon accreditation"></i> Стойка аккредитации
+                            <i class="floor-icon accreditation"></i>Accreditation Point
                         </li>
                         <li id="list2_active" class="one item" data-popup="wrapper2">
-                            <i class="floor-icon information"></i> Стойка информации
+                            <i class="floor-icon information"></i>Information Point
                         </li>
                         <li id="list3_active" class="two item" data-popup="wrapper3">
-                            <i class="floor-icon exchange"></i> Переговорная Биржи
-                            <br>деловых контактов
+                            <i class="floor-icon exchange"></i>Business Networking
+                            <br>Platform meeting room
                         </li>
                     </ul>
                 </div>
                 <div class="block nutrition">
-                    <h3>Питание</h3>
+                    <h3>Catering</h3>
                     <ul class="nav nutrition-list">
                         <li class="one item" data-popup="wrapper5">
-                            <i class="floor-icon lunch"></i>Зона обеда
+                            <i class="floor-icon lunch"></i>Lunch area
                         </li>
                         <li class="drop-down">
                             <ul>
                                 <li id="list4_active" class="subsidiary-item" data-popup="wrapper5">
-                                    — для участников
+                                    — for participants
                                 </li>
                                 <li id="list5_active" class="subsidiary-item" data-popup="wrapper4">
-                                    — для СМИ
+                                    — for the media
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="block infrastructure">
-                    <h3>Инфраструктура</h3>
+                    <h3>Infrastructure</h3>
                     <ul class="nav infrastructure-list">
-                        <li id="list6_active" class="one item" data-popup="wrapper6"><i class="floor-icon cash-machine"></i>Банкоматы</li>
-                        <li id="list7_active" class="one item" data-popup="wrapper7"><i class="floor-icon elevator"></i>Лифты</li>
+                        <li id="list6_active" class="one item" data-popup="wrapper6"><i class="floor-icon cash-machine"></i>Cash Point</li>
+                        <li id="list7_active" class="one item" data-popup="wrapper7"><i class="floor-icon elevator"></i>Elevators</li>
                         <li id="list8_active" class="two item" data-popup="wrapper8">
-                            <i class="floor-icon hotel"></i> Стойка размещения
-                            <br>в отеле
+                            <i class="floor-icon hotel"></i>Hotel accommodation
+                            <br>stand
                         </li>
                         <li id="list9_active" class="one item" data-popup="wrapper9"><i class="floor-icon toilet"></i>WC</li>
-                        <li id="list99_active" class="two item" data-popup="wrapper99"><i class="floor-icon cultural-program"></i>Стойка культурной
-                            <br>программы</li>
+                        <li id="list99_active" class="two item" data-popup="wrapper99"><i class="floor-icon cultural-program"></i>Cultural programme
+                            <br>stand</li>
                     </ul>
                 </div>
                 <div class="wi-fi">
                     <h3 class="wi-fi">Wi-Fi</h3>
                     <div class="text">
-                        На площадке обеспечен
-                        <br>беспроводной доступ в Интернет
+                        Wireless Internet access
+                        <br>is provided at the venue
                     </div>
                     <ul class="wifi-login">
                         <li>
-                            <span class="bold">логин:</span> IBC-2015
+                            <span class="bold">Login:</span> IBC-2015
                         </li>
                         <li>
-                            <span class="bold">пароль:</span> ibc-2015
+                            <span class="bold">Password:</span> ibc-2015
                         </li>
                     </ul>
                 </div>
@@ -177,25 +209,26 @@
                             <div class="close-icon"></div>
                             <div class="arrow-left"></div>
                             <div class="title">
-                                <div class="place">Зал «Стремянная»</div>
-                                Стойка аккредитации
+                                <div class="place">Stremyannaya Hall</div>
+                                Accreditation Point
                             </div>
                             <div class="body">
                                 <ul>
-                                    <li class="bold">График работы: </li>
-                                    <li>3 июня 09:00 – 23:00</li>
-                                    <li>4 июня 07:00 – 20:00</li>
-                                    <li>5 июня 08:00 – 15:00</li>
+                                    <li class="bold">Working hours:</li>
+                                    <li>June 3, 09:00 – 23:00</li>
+                                    <li>June 4, 07:00 – 20:00</li>
+                                    <li>June 5, 08:00 – 15:00</li>
                                 </ul>
                                 <p>
-                                    Предъявите паспорт и получите
-                                    <br>аккредитационный именной бедж,
-                                    <br>необходимый для доступа на площадку
-                                    <br>(рекомендуем в течение всего вермени
-                                    <br>работы МБК носить его с собой).
+                                    Present your passport and receive your
+                                    <br>accreditation name badge required to
+                                    <br>enter the venue (we suggest wearing
+                                    <br>the badge at all times at the IBC).
                                 </p>
                                 <p class="bold">
-                                    Бедж запрещено передавать третьим лицам. При его утрате или порче обратитесь на стойку аккредитации.
+                                    The badge is not transferable.
+                                    <br> If lost or damaged, please contact
+                                    <br> the Accreditation Point.
                                 </p>
                             </div>
                         </div>
@@ -209,24 +242,21 @@
                             <div class="close-icon"></div>
                             <div class="arrow-right"></div>
                             <div class="title">
-                                Стойка информации
+                                Information Point
                             </div>
                             <div class="body">
                                 <ul>
-                                    <li class="bold">График работы: </li>
-                                    <li>3 июня 12:00 – 21:00</li>
-                                    <li>4 июня 08:00 – 19:30</li>
-                                    <li>5 июня 08:00 – 17:00</li>
+                                    <li class="bold">Working hours:</li>
+                                    <li>June 3, 12:00 – 21:00</li>
+                                    <li>June 4, 08:00 – 19:30</li>
+                                    <li>June 5, 08:00 – 17:00</li>
                                 </ul>
                                 <p>
-                                    Здесь можно получить административную
-                                    <br> и логистическую информацию, графики
-                                    <br> движения коллективных трансферов,
-                                    <br> программные материалы мероприятий
-                                    <br> Конгресса и помощь по общим вопросам.
-                                    <br> Также здесь находится бюро находок: сюда
-                                    <br> передаются вещи, найденные в залах
-                                    <br> проведения мероприятий.
+                                    Administrative and logistic information, transfer
+                                    <br>schedules, programme materials of Congress
+                                    <br>events and assistance on general issues may be
+                                    <br>obtained at the Information Point. Lost Property
+                                    <br>Office is also located at the Point.
                                 </p>
                             </div>
                         </div>
@@ -240,14 +270,13 @@
                             <div class="close-icon"></div>
                             <div class="arrow-left"></div>
                             <div class="title">
-                                Переговорные Биржи
-                                <br>деловых контактов
+                                Business Networking Platform
+                                <br>meeting room
                             </div>
                             <div class="body">
                                 <p>
-                                    Забронировать переговорную можно
-                                    <br> на <span class="bold second-floor green-hover">2-м этаже</span> у стойки "Биржа деловых
-                                    <br> контактов".
+                                    You can reserve a meeting room on the
+                                    <br><span class="bold second-floor green-hover">first floor</span> at the Business Networking Platform.
                                 </p>
                             </div>
                         </div>
@@ -261,12 +290,13 @@
                             <div class="close-icon"></div>
                             <div class="arrow-left"></div>
                             <div class="title">
-                                Ресторан «Бирштубе»
+                                Bierstube
+                                <br>Restaurant
                             </div>
                             <div class="body">
                                 <p>
-                                    Зона обеда
-                                    <br> представителей СМИ
+                                    Lunch area for media
+                                    <br>representatives
                                 </p>
                             </div>
                         </div>
@@ -280,12 +310,12 @@
                             <div class="close-icon"></div>
                             <div class="arrow-left"></div>
                             <div class="title">
-                                Кафе «Вена»
+                                Vienna Café
                             </div>
                             <div class="body">
                                 <p>
-                                    Зона обеда
-                                    <br>участников Конгресса
+                                    Lunch area for Congress
+                                    <br>participants
                                 </p>
                             </div>
                         </div>
@@ -297,12 +327,12 @@
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Бар «Невский»
+                                Nevsky Bar
                             </div>
                             <div class="body">
                                 <p>
-                                    Зона обеда
-                                    <br>участников Конгресса
+                                    Lunch area for Congress
+                                    <br>participants
                                 </p>
                             </div>
                         </div>
@@ -340,8 +370,8 @@
                         <div class="bg-block position11"></div>
                     </div>
                 </div>
-                <div class="street top">улица Стремянная</div>
-                <div class="street bottom">Невский проспект</div>
+                <div class="street top">Stremyannaya street</div>
+                <div class="street bottom">Nevsky prospect</div>
             </div>
         </div>
         <!-- first floor end -->
@@ -351,67 +381,61 @@
         <div class="floor second clearfix">
             <div class="left">
                 <div class="block congress">
-                    <h3>Конгресс</h3>
+                    <h3>Congress</h3>
                     <ul class="nav">
                         <li id="list10_active" class="one item" data-popup="wrapper10">
-                            <i class="floor-icon information"></i>Стойка информации
+                            <i class="floor-icon information"></i>Information Point
                         </li>
                         <li id="list11_active" class="two item" data-popup="wrapper11">
-                            <i class="floor-icon contacts"></i>Стойка Биржи деловых
-                            <br>контактов
+                            <i class="floor-icon contacts"></i>Business Networking
+                            <br>Platform stand
                         </li>
-                        <li id="list13_active" class="two item" data-popup="wrapper13">
-                            <i class="floor-icon affairs"></i>Зона делового
-                            <br>общения
+                        <li id="list13_active" class="one item" data-popup="wrapper13">
+                            <i class="floor-icon affairs"></i>Networking Area
                         </li>
-                        <!--
-                        <li id="list14_active" class="two item" data-popup="wrapper14">
-                            <i class="floor-icon rapporteurs"></i>Комната для
-                            <br>докладчиков
-                        </li>-->
                         <li id="list15_active" class="one item" data-popup="wrapper15">
-                            <i class="floor-icon session"></i>Зал для сессии
+                            <i class="floor-icon session"></i>Session halls
                         </li>
                         <li id="list16_active" class="one item" data-popup="wrapper16">
-                            <i class="floor-icon press-approach"></i>Зона пресс-подхода
+                            <i class="floor-icon press-approach"></i>Media area
                         </li>
                         <li id="list17_active" class="one item" data-popup="wrapper17">
-                            <i class="floor-icon access-control"></i>Контроль доступа
+                            <i class="floor-icon access-control"></i>Access control
                         </li>
                     </ul>
                 </div>
                 <div class="block nutrition">
-                    <h3>Питание</h3>
+                    <h3>Catering</h3>
                     <ul class="nav nutrition-list">
                         <li id="list18_active" class="one item" data-popup="wrapper18">
-                            <i class="floor-icon lunch"></i>Зона обеда участников
+                            <i class="floor-icon lunch"></i>Lunch area for participants
                         </li>
                         <li id="list19_active" class="one item" data-popup="wrapper19">
-                            <i class="floor-icon coffee"></i>Зона кофе-брейка
+                            <i class="floor-icon coffee"></i>Coffee break area
                         </li>
                     </ul>
                 </div>
                 <div class="block infrastructure">
-                    <h3>Инфраструктура</h3>
+                    <h3>Infrastructure</h3>
                     <ul class="nav infrastructure-list">
-                        <li id="list20_active" class="one item" data-popup="wrapper20"><i class="floor-icon elevator"></i>Лифты</li>
-                        <li id="list21_active" class="one item" data-popup="wrapper21"><i class="floor-icon ladder"></i>Лестница на 3 этаж</li>
-                        <li id="list89_active" class="one item" data-popup="wrapper89"><i class="floor-icon wardrobe"></i>Гардероб</li>
+                        <li id="list20_active" class="one item" data-popup="wrapper20"><i class="floor-icon elevator"></i>Elevators</li>
+                        <li id="list21_active" class="one item" data-popup="wrapper21"><i class="floor-icon ladder"></i>Stairs to second floor</li>
+                        <li id="list89_active" class="one item" data-popup="wrapper89"><i class="floor-icon wardrobe"></i>Cloakroom</li>
                         <li id="list22_active" class="one item" data-popup="wrapper22"><i class="floor-icon toilet"></i>WC</li>
                     </ul>
                 </div>
                 <div class="wi-fi">
                     <h3 class="wi-fi">Wi-Fi</h3>
                     <div class="text">
-                        На площадке обеспечен
-                        <br>беспроводной доступ в Интернет
+                        Wireless Internet access is
+                        <br>provided at the venue
                     </div>
                     <ul class="wifi-login">
                         <li>
-                            <span class="bold">логин:</span> IBC-2015
+                            <span class="bold">Login:</span> IBC-2015
                         </li>
                         <li>
-                            <span class="bold">пароль:</span> ibc-2015
+                            <span class="bold">Password:</span> ibc-2015
                         </li>
                     </ul>
                 </div>
@@ -424,24 +448,21 @@
                             <div class="close-icon"></div>
                             <div class="arrow-right"></div>
                             <div class="title">
-                                Стойка информации
+                                Information Point
                             </div>
                             <div class="body">
                                 <ul>
-                                    <li class="bold">График работы: </li>
-                                    <li>3 июня 12:00 – 21:00</li>
-                                    <li>4 июня 08:00 – 19:30</li>
-                                    <li>5 июня 08:00 – 17:00</li>
+                                    <li class="bold">Working hours: </li>
+                                    <li>June 3, 12:00 – 21:00</li>
+                                    <li>June 4, 08:00 – 19:30</li>
+                                    <li>June 5, 08:00 – 17:00</li>
                                 </ul>
                                 <p>
-                                    Здесь можно получить административную
-                                    <br> и логистическую информацию, графики
-                                    <br> движения коллективных трансферов,
-                                    <br> программные материалы мероприятий
-                                    <br> Конгресса и помощь по общим вопросам.
-                                    <br> Также здесь находится бюро находок: сюда
-                                    <br> передаются вещи, найденные в залах
-                                    <br> проведения мероприятий.
+                                    Administrative and logistic information, transfer
+                                    <br>schedules, programme materials of Congress
+                                    <br>events and assistance on general issues may be
+                                    <br>obtained at the Information Point. Lost Property
+                                    <br>Office is also located at the Point.
                                 </p>
                             </div>
                         </div>
@@ -459,19 +480,18 @@
                             <div class="close-icon"></div>
                             <div class="arrow-right"></div>
                             <div class="title">
-                                Стойка Биржи
-                                <br>деловых контактов
+                                Business Networking
+                                <br>Platform stand
                             </div>
                             <div class="body">
                                 <p>
-                                    Здесь можно запланировать проведение
-                                    <br> деловых встреч и забронировать одну из
-                                    <br> четырех переговорных комнат,
-                                    <br> предусмотренных на площадке МБК.
+                                    Business meetings can be planned
+                                    <br>at the stand and one of four meeting rooms
+                                    <br>provided at the IBC may be reserved.
                                 </p>
                                 <p class="bold BDK-tab green-hover">
-                                    Правила назначения и проведения
-                                    <br>деловых встреч.
+                                    Rules for scheduling and holding
+                                    <br>business meetings.
                                 </p>
                             </div>
                         </div>
@@ -484,24 +504,18 @@
                         <div class="bg-block position5"></div>
                     </div>
                 </div>
-                <!--
-                <div id="wrapper14_active" class="wrapper">
-
-                </div>
-                -->
                 <div id="wrapper15_active" class="wrapper">
                     <div class="item">
                         <i class="floor-icon session position17" data-list="list15"></i>
                         <div class="popup green small position9">
                             <div class="close-icon"></div>
-                            <div class="arrow-right"></div>
+                            <div class="arrow-right eng"></div>
                             <div class="title">
-                                Зал
-                                <br>«Адмиралтейство»
+                                Admiralty Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Зал для сессий.
+                                    Session Hall
                                 </p>
                             </div>
                         </div>
@@ -509,16 +523,15 @@
                     </div>
                     <div class="item">
                         <i class="floor-icon session position18" data-list="list15"></i>
-                        <div class="popup green small position10">
+                        <div class="popup green small position10 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал
-                                <br>«Санкт-Петербург»
+                                St. Petersburg Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Зал для сессий.
+                                    Session Hall
                                 </p>
                             </div>
                         </div>
@@ -530,12 +543,12 @@
                             <div class="close-icon"></div>
                             <div class="arrow-left"></div>
                             <div class="title">
-                                Зал «Невский»
+                                Nevsky Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Зал для сессий
-                                    <br> и пленарных заседаний
+                                    For sessions and
+                                    <br>plenary sessions
                                 </p>
                             </div>
                         </div>
@@ -543,16 +556,15 @@
                     </div>
                     <div class="item">
                         <i class="floor-icon session position16" data-list="list15"></i>
-                        <div class="popup green small position8">
+                        <div class="popup green small position8 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал
-                                <br>«Самара»
+                                Samara Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Зал для сессий.
+                                    Session Hall
                                 </p>
                             </div>
                         </div>
@@ -574,16 +586,15 @@
                 <div id="wrapper18_active" class="wrapper">
                     <div class="item">
                         <i class="floor-icon lunch position22" data-list="list18"></i>
-                        <div class="popup blue position12">
+                        <div class="popup blue position12 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал «Москва»
+                                Moscow Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Зона обеда
-                                    <br>участников Конгресса
+                                    Lunch area for participants
                                 </p>
                             </div>
                         </div>
@@ -595,12 +606,11 @@
                             <div class="close-icon"></div>
                             <div class="arrow-right"></div>
                             <div class="title">
-                                Рсторан «Империал»
+                                Imperial Restaurant
                             </div>
                             <div class="body">
                                 <p>
-                                    Зона обеда
-                                    <br>участников Конгресса
+                                    Lunch area for participants
                                 </p>
                             </div>
                         </div>
@@ -653,8 +663,8 @@
                         <div class="bg-block position15"></div>
                     </div>
                 </div>
-                <div class="street top">улица Стремянная</div>
-                <div class="street bottom">Невский проспект</div>
+                <div class="street top">Stremyannaya street</div>
+                <div class="street bottom">Nevsky prospect</div>
             </div>
         </div>
         <!-- second floor end -->
@@ -664,43 +674,44 @@
         <div class="floor third clearfix">
             <div class="left">
                 <div class="block congress">
-                    <h3>Конгресс</h3>
+                    <h3>Congress</h3>
                     <ul class="nav">
                         <li id="list23_active" class="one item" data-popup="wrapper23">
-                            <i class="floor-icon press-approach"></i>Пресс-центр
+                            <i class="floor-icon press-approach"></i>Press centre
                         </li>
-                        <li id="list24_active" class="one item" data-popup="wrapper24">
-                            <i class="floor-icon cb"></i>Пресс-служба ЦБ
+                        <li id="list24_active" class="two item" data-popup="wrapper24">
+                            <i class="floor-icon cb"></i>Central Bank
+                            <br>press service
                         </li>
                     </ul>
                 </div>
                 <div class="block nutrition">
-                    <h3>Питание</h3>
+                    <h3>Catering</h3>
                     <ul class="nav nutrition-list">
                         <li id="list25_active" class="one item" data-popup="wrapper25">
-                            <i class="floor-icon coffee"></i>Зона кофе-брейка
+                            <i class="floor-icon coffee"></i>Coffee break area
                         </li>
                     </ul>
                 </div>
                 <div class="block infrastructure">
-                    <h3>Инфраструктура</h3>
+                    <h3>Infrastructure</h3>
                     <ul class="nav infrastructure-list">
-                        <li id="list26_active" class="one item" data-popup="wrapper26"><i class="floor-icon ladder-down"></i>Лестница на 2 этаж </li>
+                        <li id="list26_active" class="one item" data-popup="wrapper26"><i class="floor-icon ladder-down"></i>Stairs to first floor</li>
                         <li id="list27_active" class="one item" data-popup="wrapper27"><i class="floor-icon toilet"></i>WC</li>
                     </ul>
                 </div>
                 <div class="wi-fi">
                     <h3 class="wi-fi">Wi-Fi</h3>
                     <div class="text">
-                        На площадке обеспечен
-                        <br>беспроводной доступ в Интернет
+                        Wireless Internet access is
+                        <br>rovided at the venue
                     </div>
                     <ul class="wifi-login">
                         <li>
-                            <span class="bold">логин:</span> IBC-2015
+                            <span class="bold">Login:</span> IBC-2015
                         </li>
                         <li>
-                            <span class="bold">пароль:</span> ibc-2015
+                            <span class="bold">Password:</span> ibc-2015
                         </li>
                     </ul>
                 </div>
@@ -709,16 +720,15 @@
                 <div id="wrapper23_active" class="wrapper">
                     <div class="item">
                         <i class="floor-icon press-approach position32" data-list="list23"></i>
-                        <div class="popup green small text-center position16">
+                        <div class="popup green small text-center position16 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал
-                                <br>«Новгород»
+                                Novgorod Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Пресс–центр
+                                    Press centre
                                 </p>
                             </div>
                         </div>
@@ -730,16 +740,15 @@
                     </div>
                     <div class="item">
                         <i class="floor-icon press-approach position34" data-list="list23"></i>
-                        <div class="popup green small text-center position17">
+                        <div class="popup green small text-center position17 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал
-                                <br>«Казань-1»
+                                Kazan-1 Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Пресс–центр
+                                    Press centre
                                 </p>
                             </div>
                         </div>
@@ -753,16 +762,15 @@
                 <div id="wrapper24_active" class="wrapper">
                     <div class="item">
                         <i class="floor-icon cb position36" data-list="list24"></i>
-                        <div class="popup green small text-center position18">
+                        <div class="popup green small text-center position18 eng">
                             <div class="close-icon"></div>
                             <div class="arrow-bottom"></div>
                             <div class="title">
-                                Зал
-                                <br>«Казань-2»
+                                Kazan-2 Hall
                             </div>
                             <div class="body">
                                 <p>
-                                    Пресс-служба ЦБ РФ
+                                    Press service of the Central<br>Bank of the Russian Federation
                                 </p>
                             </div>
                         </div>
@@ -788,8 +796,8 @@
                         <div class="bg-block position8"></div>
                     </div>
                 </div>
-                <div class="street top">улица Стремянная</div>
-                <div class="street bottom">Невский проспект</div>
+                <div class="street top">Stremyannaya street</div>
+                <div class="street bottom">Nevsky prospect</div>
             </div>
         </div>
         <!-- third floor end -->
@@ -797,59 +805,57 @@
 
     </div>
     <div class="content-tab bdk-tab content-center">
-        <h2>Биржа деловых<br>контактов</h2>
-        <div class="top-title">Здесь можно запланировать проведение
-            <br>деловых встреч и забронировать одну
-            <br>из четырех переговорных комнат,
-            <br>предусмотренных на площадке МБК
+        <h2>Business<br>Networking Platform</h2>
+        <div class="top-title">Business meetings can be planned at the
+            <br>booth stand and one of four meeting rooms
+            <br>provided at the IBC may be reserved.
         </div>
         <div class="block clearfix">
             <div class="left">
-                <h3>Правила</h3>
-                <div class="description">назначения
-                    <br>и проведения встреч:
+                <h3>Rules</h3>
+                <div class="description">for scheduling and
+                    <br>holding meetings:
                 </div>
             </div>
-            <div class="right rules">
+            <div class="right rules eng">
                 <div class="line">
-                    <i class="icon one"></i>Назначьте (создайте) встречу в <a target="_blank" href="https://reg.ibcongress.com/ru/icruser">Личном кабинете</a>
-                    <br>на официальном сайте Конгресса
+                    <i class="icon one"></i>Schedule (create) a meeting in the <a target="_blank" href="https://reg.ibcongress.com/en">Personal Web Office</a>
+                    <br>on the official Congress website
                 </div>
                 <div class="line">
                     <i class="icon two"></i>
                     <p>
-                        После получения подтверждения хотя бы от одного
-                        <br>приглашённого участника, Ваша встреча будет
-                        <br>включена в общий график</p>
+                        Upon receiving confirmation from at least one of the invitees,
+                        <br>your meeting will be included in the general schedule
+                    </p>
                     <p class="bold green">
-                        Во вкладке «Расписание» можно посмотреть свой
-                        <br>персональный график встреч
+                        You may view your personal meeting schedule
+                        <br>in the “Schedule” tab
                     </p>
                 </div>
                 <div class="line">
-                    <i class="icon three"></i> В назначенное время подойте к стойке администратора
-                    <br>Биржи деловых контактов <span class="green-hover green second-floor">(2 этаж)</span> и предъявите бейдж
+                    <i class="icon three"></i>Come to the Business Networking Platform administrator’s stand
+                    <br><span class="green-hover green second-floor">(first floor)</span> at the scheduled time and present your badge
                 </div>
             </div>
         </div>
         <div class="block clearfix important">
             <div class="left">
-                <h3>Важно:</h3>
+                <h3>Important:</h3>
             </div>
             <div class="right">
                 <div class="line">
-                    <i class="icon negotiations"></i> Переговорная бронируется только
-                    <br>для подтвержденных встреч
+                    <i class="icon negotiations"></i>Meeting rooms are only reserved
+                    <br>for confirmed meetings
                 </div>
                 <div class="line">
-                    <i class="icon time"></i> Для проведения незапланированных в системе встреч
-                    <br>переговорная может быть предоставлена только при
-                    <br>наличии свободных мест
+                    <i class="icon time"></i>For meetings not scheduled in the system, a meeting
+                    <br>room may only be provided if available
                 </div>
                 <div class="line">
-                    <i class="icon clock"></i> Встречи проходят в строго заявленное время
-                    <br>в течение 30 минут. Продлить время встречи можно
-                    <br>только при наличии свободных мест
+                    <i class="icon clock"></i>Meetings shall be held strictly within the stated time of 30
+                    <br>minutes. Meeting times may only be extended if rooms
+                    <br>are available
                 </div>
             </div>
         </div>

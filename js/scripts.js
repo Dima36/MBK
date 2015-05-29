@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    var languageRus = true,
+        Pagelanguage = $('body').attr('data-langRu');
+
+    if (Pagelanguage === 'eng') {
+        languageRus = !languageRus;
+    }
+
     var resetFloors = function () {
         $('.left .block').addClass('default').find('.item').addClass('default');
         $('.right .wrapper .item').removeClass('show').find('.popup').removeClass('show');
@@ -26,80 +33,6 @@ $(document).ready(function () {
         $('header .nav .item').removeClass("active").eq(2).addClass("active");
         $(".content-tab").hide().eq(2).show();
     });
-
-
-    /* participants slider
-    var itemWidth = parseFloat($('.items-list. .item').css('width')),
-        itemLeftMargin = parseFloat($('.items-list. .item').css('margin-right')),
-        slidesNum = 1;
-
-    $('.slide-title .text').live("click", function (itemsCount) {
-        slidesNum = 1;
-        $('.participants .line-wrap').removeClass('open').addClass('default');
-        $(this).parent().parent().removeClass('default');
-
-        var seleced = $(this).parent().parent().addClass('open').find('.items-list'),
-            itemsCount = seleced.find('.item').length,
-            wrapWidth = itemsCount * (itemWidth + itemLeftMargin) - itemLeftMargin;
-
-        if (itemsCount < 5) {
-            seleced.css({
-                "width": wrapWidth + 'px',
-                "margin-left": -(wrapWidth / 2) + 'px',
-                "left": "50%"
-            }).siblings(".prev-slide, .next-slide").hide();
-        } else {
-            seleced.css({
-                "width": wrapWidth + 'px',
-                "left": 64
-            });
-            seleced.siblings(".next-slide").show();
-        }
-
-        if (slidesNum === 1) {
-            seleced.siblings(".prev-slide").hide();
-        }
-    });
-
-    $('.next-slide, .prev-slide').live("click", function (itemsCount) {
-        var selecedArrow = $(this).siblings('.items-list'),
-            itemsCount = selecedArrow.find('.item').length;
-
-        if (slidesNum == 1) {
-            selecedArrow.css('left', 64);
-        } else if (slidesNum == 2) {
-            selecedArrow.css('left', -(itemWidth + itemLeftMargin - 64) * (slidesNum - 1));
-        } else if (slidesNum > 2) {
-            selecedArrow.css('left', -((itemWidth + itemLeftMargin) * (slidesNum - 1) - 64));
-        }
-
-        var test = itemsCount - 3;
-
-        if (slidesNum === 1) {
-            $('.prev-slide').hide();
-        } else {
-            $('.prev-slide').show();
-        }
-
-        if (slidesNum === test) {
-            $('.next-slide').hide();
-        } else {
-            $('.next-slide').show();
-        }
-    });
-
-    $('.close-slider').live("click", function (itemsCount) {
-        slidesNum = 1;
-        $('.participants .line-wrap').removeClass('open').removeClass('default');
-    });
-
-    $(".next-slide").click(function () {
-        slidesNum++;
-    })
-    $(".prev-slide").click(function () {
-        slidesNum--;
-    })
-*/
 
     // hide/show floors tab
     $(".platforms .floor").hide().eq(0).show();
@@ -217,23 +150,23 @@ $(document).ready(function () {
 
     // icons
     var metroIcon = L.divIcon({
-            className: 'transport-icon on-foot',
+            className: 'transport-icon-map on-foot',
             iconSize: [39, 39]
         }),
         MoscowStationIcon = L.divIcon({
-            className: 'transport-icon train',
+            className: 'transport-icon-map train',
             iconSize: [39, 39]
         }),
         FinlandStationIcon = L.divIcon({
-            className: 'transport-icon train',
+            className: 'transport-icon-map train',
             iconSize: [39, 39]
         }),
         PulkovoAirportIcon = L.divIcon({
-            className: 'transport-icon plane',
+            className: 'transport-icon-map plane',
             iconSize: [39, 39]
         }),
         SeaPortIcon = L.divIcon({
-            className: 'transport-icon ship',
+            className: 'transport-icon-map ship',
             iconSize: [39, 39]
         }),
         MapBig = L.divIcon({
@@ -257,33 +190,31 @@ $(document).ready(function () {
         icon: MapBig
     }).addTo(map);
 
-    var test = false;
-
     // markers
     var metroMarker = L.marker([59.931776, 30.354581], {
             icon: metroIcon
-        }).bindPopup(test ? 'alksdjf;lkasjd;flasdf' : "ст. метро<br>«Маяковская»").addTo(map),
+        }).bindPopup(languageRus ? "ст. метро<br>«Маяковская»" : "Mayakovskaya<br>Metro Station").addTo(map),
         MoscowStationMarker = L.marker([59.930103, 30.361997], {
             icon: MoscowStationIcon
-        }).bindPopup("Московский<br>ж/д вокзал").addTo(map),
+        }).bindPopup(languageRus ? "Московский<br>ж/д вокзал": "Moskovsky<br>Rail Terminal").addTo(map),
         FinlandStationMarker = L.marker([59.955539, 30.356345], {
             icon: FinlandStationIcon
-        }).bindPopup("Финляндский<br>ж/д вокзал").addTo(map),
+        }).bindPopup(languageRus ? "Финляндский<br>ж/д вокзал": "Finlyandsky<br>Rail Terminal").addTo(map),
         PulkovoAirportMarker = L.marker([59.797388, 30.273487], {
             icon: PulkovoAirportIcon
-        }).bindPopup("Аэропорт<br>«Пулково»").addTo(map),
+        }).bindPopup(languageRus ? "Аэропорт<br>«Пулково»" : "Pulkovo Airport").addTo(map),
         SeaPortMarker = L.marker([59.948942, 30.194941], {
             icon: SeaPortIcon
-        }).bindPopup("Пассажирский<br>морской терминал").addTo(map),
+        }).bindPopup(languageRus ? "Пассажирский<br>морской терминал" : "Marine Terminal").addTo(map),
         MariinskyTheatreMarker = L.marker([59.925646, 30.295996], {
             icon: MariinskyTheatreIcon
-        }).bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").addTo(map),
+        }).bindPopup(languageRus ? "Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский»: <span class='light-bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='light-bolder'>10 минут</span>" : "Shuttle departure<br>from Mariinsky Theatre<br>to Corinthia Hotel St. Petersburg<br>and Hotel Dostoevsky: <span class='light-bolder'>22:00 — 22:40</span><br>Every <span class='light-bolder'>10 minutes</span>").addTo(map),
         MuseumReserveMarker = L.marker([59.886298, 29.908587], {
             icon: MuseumReserveIcon
-        }).bindPopup("<p>Отправление шаттлов<br>от Летнего дворца: <span class='bolder'>23:30 — 00:00</span><br>Интервал отправления: <span class='bolder'>20 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").addTo(map),
+        }).bindPopup(languageRus ? "Отправление шаттлов<br>от Летнего дворца: <span class='light-bolder'>23:30 — 00:00</span><br>Интервал отправления: <span class='light-bolder'>20 минут</span>" : "Shuttle departure from the Summer<br>Palace: <span class='light-bolder'>23:30 — 00:00</span><br>Every <span class='light-bolder'>20 minutes</span>").addTo(map),
         DostoevskyHotelMarker = L.marker([59.928468, 30.346480], {
             icon: DostoevskyHotelIcon
-        }).bindPopup("Отправление шаттлов<br>до Мариинского театра: <span class='bolder'>18:15</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").addTo(map);
+        }).bindPopup(languageRus ? "Отправление шаттлов<br>до Мариинского театра: <span class='light-bolder'>18:15</span>" : "Shuttle departure<br>to Mariinsky Theatre: <span class='light-bolder'>18:15</span>").addTo(map);
 
 
     // Icons resize
@@ -305,27 +236,27 @@ $(document).ready(function () {
         // finally, declare a new icon and update the marker
         var newMetroIcon = new L.divIcon({
             iconSize: newIconSize,
-            className: 'transport-icon on-foot'
+            className: 'transport-icon-map on-foot'
         });
 
         var newMoscowStationIcon = new L.divIcon({
             iconSize: newIconSize,
-            className: 'transport-icon train'
+            className: 'transport-icon-map train'
         });
 
         var newFinlandStationIcon = new L.divIcon({
             iconSize: newIconSize,
-            className: 'transport-icon train'
+            className: 'transport-icon-map train'
         });
 
         var newPulkovoAirportIcon = new L.divIcon({
             iconSize: newIconSize,
-            className: 'transport-icon plane'
+            className: 'transport-icon-map plane'
         });
 
         var newSeaPortIcon = new L.divIcon({
             iconSize: newIconSize,
-            className: 'transport-icon ship'
+            className: 'transport-icon-map ship'
         });
 
         var newMariinskyTheatreIcon = new L.divIcon({
@@ -363,13 +294,6 @@ $(document).ready(function () {
         else // zoom >= 17
             return 0.50;
     }
-
-
-
-
-
-
-
 
     // Rouds
     var pointA = new L.LatLng(59.955272, 30.356104),
@@ -546,8 +470,8 @@ $(document).ready(function () {
             $('#corinthia-museum').removeClass('active');
             $('#dostoevsky').removeClass('active');
             map.doublePopup = true;
-            mainMarker.bindPopup("<p>Отправление шаттлов<br>до Мариинского театра: <span class='bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
-            MariinskyTheatreMarker.bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург» <br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+            mainMarker.bindPopup(languageRus ? "Отправление шаттлов<br>до Мариинского театра: <span class='light-bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='light-bolder'>10 минут</span>" : "Shuttle departure<br>to Mariinsky Theatre:<br><span class='light-bolder'>18:00 — 18:30</span><br>Every <span class='light-bolder'>10 минут</span>").openPopup().addTo(map);
+            MariinskyTheatreMarker.bindPopup(languageRus ? "Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург» <br>и «Достоевский»: <span class='light-bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='light-bolder'>10 минут</span>" : "Shuttle departure<br>from Mariinsky Theatre<br>to Corinthia Hotel St. Petersburg<br>and Hotel Dostoevsky: <span class='light-bolder'>22:00 — 22:40</span><br>Every <span class='light-bolder'>10 minutes</span>").openPopup().addTo(map);
             CorinthiaToMariinskyRoud.addTo(map);
         },
         CorinthiaMuseum = function () {
@@ -557,7 +481,7 @@ $(document).ready(function () {
             $('#corinthia-theater').removeClass('active');
             $('#dostoevsky').removeClass('active');
             map.doublePopup = true;
-            mainMarker.bindPopup("<p>Отправление шаттлов<br>до Летнего дворца: <span class='bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского<br>такси по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+            mainMarker.bindPopup(languageRus ? "Отправление шаттлов<br>до Летнего дворца: <span class='light-bolder'>18:00 — 18:30</span><br>Интервал отправления: <span class='light-bolder'>10 минут</span>" : "Shuttle departure to the Summer<br>Palace: <span class='light-bolder'>18:00 — 18:30</span><br>Every <span class='light-bolder'>10 minutes</span>").openPopup().addTo(map);
             MuseumReserveMarker.openPopup().addTo(map);
             CorinthiaToMuseumReserveRoud.addTo(map);
         }
@@ -579,10 +503,10 @@ $(document).ready(function () {
         $('#corinthia-museum').removeClass('active');
         $('#corinthia-theater').removeClass('active');
         $(this).addClass('active');
-        map.setView([59.927561, 30.332357], 14);
+        map.setView([59.932980, 30.322057], 13);
         map.doublePopup = true;
         DostoevskyHotelMarker.openPopup().addTo(map);
-        MariinskyTheatreMarker.bindPopup("<p>Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский: <span class='bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='bolder'>10 минут</span></p><p>Если Вы не успели на шаттл, рекомендуем<br>воспользоваться услугами городского такси<br>по телефону +7 (812) 326 0000</p>").openPopup().addTo(map);
+        MariinskyTheatreMarker.bindPopup(languageRus ? "Отправление шаттлов от Мариинского театра<br>к гостиницам «Коринтия Санкт-Петербург»<br>и «Достоевский»: <span class='light-bolder'>22:00 — 22:40</span><br>Интервал отправления: <span class='light-bolder'>10 минут</span>" : "Shuttle departure<br>from Mariinsky Theatre<br>to Corinthia Hotel St. Petersburg<br>and Hotel Dostoevsky: <span class='light-bolder'>22:00 — 22:40</span><br>Every <span class='light-bolder'>10 minutes</span>").openPopup().addTo(map);
         DostoevskyToMariinskyRoud.addTo(map);
     });
 
